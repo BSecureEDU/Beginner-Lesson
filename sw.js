@@ -1,7 +1,7 @@
 // Bitcoin Education — Service Worker
 // Provides offline caching so the PWA works without internet after first load
 
-const CACHE_NAME = 'btc-edu-v2';
+const CACHE_NAME = 'btc-edu-v3';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
