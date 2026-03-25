@@ -1,0 +1,2480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#F7931A">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="BTC Education">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <title>What is Money? — Bitcoin Education</title>
+    <style>
+        /* ===== BASE STYLES ===== */
+        :root {
+            --btc-orange: #F7931A;
+            --btc-dark: #1A1A2E;
+            --btc-light: #F5F5F5;
+            --btc-gray: #4A4A68;
+            --btc-accent: #E8B84B;
+            --btc-success: #2ECC71;
+            --btc-info: #3498DB;
+            --btc-danger: #E74C3C;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(180deg, #ECEEF1 0%, var(--btc-light) 30%, #F0EDE8 100%);
+            color: var(--btc-dark);
+            line-height: 1.7;
+        }
+
+        /* ===== HEADER ===== */
+        .lesson-header {
+            padding: 4.5rem 2rem 3.5rem;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(247,147,26,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 50%, rgba(232,184,75,0.08) 0%, transparent 60%),
+                linear-gradient(135deg, #0F0F23 0%, var(--btc-dark) 40%, #16213E 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lesson-header::before {
+            content: '$';
+            position: absolute;
+            font-size: 18rem;
+            color: rgba(247,147,26,0.10);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: 700;
+            pointer-events: none;
+            font-family: Georgia, serif;
+        }
+
+        .lesson-header .level-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--btc-orange), #E8841A);
+            color: white;
+            padding: 0.35rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 12px rgba(247,147,26,0.3);
+        }
+
+        .lesson-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .lesson-header .subtitle {
+            font-size: 1.15rem;
+            opacity: 0.85;
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .content {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h2 {
+            color: var(--btc-dark);
+            font-size: 1.7rem;
+            margin: 2.5rem 0 1rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            padding-bottom: 0.75rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--btc-orange), var(--btc-accent));
+            border-radius: 2px;
+        }
+
+        h3 {
+            color: var(--btc-gray);
+            font-size: 1.25rem;
+            margin: 1.8rem 0 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        /* ===== GLOSSARY TOOLTIP SYSTEM ===== */
+        .glossary-term {
+            color: var(--btc-dark);
+            border-bottom: 1.5px dotted var(--btc-orange);
+            cursor: pointer;
+            position: relative;
+            font-weight: 600;
+            transition: color 0.15s ease;
+        }
+
+        .glossary-term:hover {
+            color: var(--btc-orange);
+        }
+
+        .takeaways .glossary-term {
+            color: white;
+            border-bottom-color: var(--btc-accent);
+        }
+
+        .takeaways .glossary-term:hover {
+            color: var(--btc-orange);
+        }
+
+        .glossary-bubble {
+            display: none;
+            position: absolute;
+            bottom: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--btc-dark);
+            color: #E8E8E8;
+            padding: 0.85rem 1.1rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 400;
+            line-height: 1.5;
+            width: 300px;
+            max-width: 90vw;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            z-index: 1000;
+            pointer-events: auto;
+        }
+
+        .glossary-bubble::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 8px solid transparent;
+            border-top-color: var(--btc-dark);
+        }
+
+        .glossary-bubble .bubble-term {
+            color: var(--btc-orange);
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.3rem;
+            display: block;
+        }
+
+        .glossary-bubble.active {
+            display: block;
+            animation: bubbleFadeIn 0.15s ease;
+        }
+
+        .glossary-bubble.flip-below {
+            bottom: auto;
+            top: calc(100% + 10px);
+        }
+
+        .glossary-bubble.flip-below::after {
+            top: auto;
+            bottom: 100%;
+            border-top-color: transparent;
+            border-bottom-color: var(--btc-dark);
+        }
+
+        @keyframes bubbleFadeIn {
+            from { opacity: 0; transform: translateX(-50%) translateY(4px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        /* ===== CALLOUT BOXES ===== */
+        .callout {
+            border-radius: 12px;
+            padding: 1.5rem 1.75rem;
+            margin: 1.75rem 0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            border-left-width: 5px;
+            border-left-style: solid;
+            position: relative;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .callout:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .callout-key {
+            background: linear-gradient(135deg, #FFF8EE 0%, #FFF3E0 100%);
+            border-left-color: var(--btc-orange);
+        }
+
+        .callout-info {
+            background: linear-gradient(135deg, #F0F7FE 0%, #E3F2FD 100%);
+            border-left-color: var(--btc-info);
+        }
+
+        .callout-example {
+            background: linear-gradient(135deg, #F0FAF1 0%, #E8F5E9 100%);
+            border-left-color: var(--btc-success);
+        }
+
+        .callout-warning {
+            background: linear-gradient(135deg, #FFF5F5 0%, #FFEBEE 100%);
+            border-left-color: var(--btc-danger);
+        }
+
+        .callout-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .callout-key .callout-title { color: var(--btc-orange); }
+        .callout-info .callout-title { color: var(--btc-info); }
+        .callout-example .callout-title { color: var(--btc-success); }
+        .callout-warning .callout-title { color: var(--btc-danger); }
+
+        /* ===== DIAGRAM STYLES ===== */
+        .diagram {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border: 1px solid rgba(247,147,26,0.12);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .diagram:hover {
+            box-shadow: 0 6px 28px rgba(0,0,0,0.1);
+        }
+
+        .diagram-title {
+            text-align: center;
+            font-weight: 700;
+            color: var(--btc-gray);
+            margin-bottom: 1.5rem;
+            font-size: 1.15rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .diagram-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background: var(--btc-orange);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .flow-step {
+            background: var(--btc-dark);
+            color: white;
+            padding: 0.85rem 1.4rem;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            min-width: 120px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        .flow-step:hover {
+            transform: scale(1.05);
+        }
+
+        .flow-step.problem {
+            background: linear-gradient(135deg, var(--btc-danger), #C0392B);
+            animation: problemPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes problemPulse {
+            0%, 100% { box-shadow: 0 2px 10px rgba(231,76,60,0.2); }
+            50% { box-shadow: 0 4px 20px rgba(231,76,60,0.4); }
+        }
+
+        .flow-step.solution {
+            background: linear-gradient(135deg, var(--btc-success), #27AE60);
+        }
+
+        .flow-arrow {
+            font-size: 1.5rem;
+            color: var(--btc-orange);
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(247,147,26,0.3);
+        }
+
+        /* ===== COMPARISON GRID ===== */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .comparison-card {
+            background: white;
+            border-radius: 14px;
+            padding: 1.75rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border-top: 4px solid var(--btc-danger);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .comparison-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .comparison-card.good {
+            border-top-color: var(--btc-success);
+        }
+
+        .comparison-card.btc {
+            border-top-color: var(--btc-orange);
+        }
+
+        .comparison-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .comparison-card p, .comparison-card li {
+            font-size: 0.95rem;
+            color: var(--btc-gray);
+        }
+
+        .comparison-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .comparison-card li {
+            padding: 0.3rem 0;
+            padding-left: 1.4rem;
+            position: relative;
+        }
+
+        .comparison-card li::before {
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .comparison-card.good li::before,
+        .comparison-card.btc li::before {
+            content: "✓";
+            color: var(--btc-success);
+        }
+
+        .comparison-card li.con::before {
+            content: "✕";
+            color: var(--btc-danger);
+        }
+
+        .icon-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .icon-red { background: #FFEBEE; color: var(--btc-danger); }
+        .icon-orange { background: #FFF3E0; color: var(--btc-orange); }
+        .icon-green { background: #E8F5E9; color: var(--btc-success); }
+        .icon-blue { background: #E3F2FD; color: var(--btc-info); }
+        .icon-gold { background: #FFF8E1; color: #D4A017; }
+
+        /* ===== STAT CARDS ===== */
+        .stat-row {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1.75rem 1.5rem;
+            background: linear-gradient(135deg, var(--btc-dark) 0%, #16213E 100%);
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(26,26,46,0.2);
+            min-width: 180px;
+            flex: 1;
+            max-width: 250px;
+            border: 1px solid rgba(247,147,26,0.15);
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--btc-orange), var(--btc-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 12px rgba(247,147,26,0.3));
+            line-height: 1;
+        }
+
+        .stat-number.counting {
+            animation: countPulse 0.05s ease;
+        }
+
+        @keyframes countPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            margin-top: 0.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline {
+            position: relative;
+            padding: 1rem 0 0 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 6.5px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--btc-orange), var(--btc-accent));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1.25rem;
+            margin-bottom: 1.75rem;
+            position: relative;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--btc-orange);
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--btc-orange);
+            flex-shrink: 0;
+            margin-top: 0.3rem;
+            z-index: 1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-item.current .timeline-dot {
+            background: var(--btc-success);
+            box-shadow: 0 0 0 2px var(--btc-success);
+        }
+
+        .timeline-item:hover .timeline-dot {
+            transform: scale(1.3);
+            box-shadow: 0 0 0 2px var(--btc-orange), 0 0 12px rgba(247,147,26,0.4);
+        }
+
+        .timeline-content {
+            background: white;
+            border-radius: 12px;
+            padding: 1.15rem 1.4rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            flex: 1;
+            border-left: 3px solid transparent;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            border-left-color: var(--btc-orange);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transform: translateX(4px);
+        }
+
+        .timeline-date {
+            font-weight: 700;
+            color: var(--btc-orange);
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-content h4 {
+            font-size: 1rem;
+            color: var(--btc-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-content p {
+            font-size: 0.95rem;
+            color: var(--btc-gray);
+            margin-bottom: 0;
+        }
+
+        /* ===== FEATURED QUOTE ===== */
+        .genesis-quote {
+            background: linear-gradient(135deg, #0F0F23 0%, var(--btc-dark) 50%, #16213E 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 3rem 2.5rem;
+            margin: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(247,147,26,0.15);
+        }
+
+        .genesis-quote::before {
+            content: '\201C';
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            font-size: 8rem;
+            color: rgba(247,147,26,0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .genesis-quote::after {
+            content: '\201D';
+            position: absolute;
+            bottom: -40px;
+            right: 15px;
+            font-size: 8rem;
+            color: rgba(247,147,26,0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .genesis-quote .quote-text {
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+            color: var(--btc-orange);
+            font-family: Georgia, serif;
+            text-shadow: 0 2px 15px rgba(247,147,26,0.15);
+        }
+
+        .genesis-quote .quote-source {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* ===== TABLES ===== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--btc-dark) 0%, #16213E 100%);
+            color: white;
+            padding: 0.85rem 1.15rem;
+            text-align: left;
+            font-size: 0.85rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        td {
+            padding: 0.85rem 1.15rem;
+            border-bottom: 1px solid #E0E0E0;
+            font-size: 0.95rem;
+        }
+
+        tr:nth-child(even) { background: #FAFAFA; }
+        tr:hover { background: #FFF8EE; }
+
+        /* ===== KEY TAKEAWAYS ===== */
+        .takeaways {
+            background: linear-gradient(135deg, #0F0F23 0%, var(--btc-dark) 50%, #16213E 100%);
+            color: white;
+            border-radius: 14px;
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(247,147,26,0.1);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .takeaways::before {
+            content: '\20BF';
+            position: absolute;
+            font-size: 12rem;
+            color: rgba(247,147,26,0.03);
+            top: 50%;
+            right: -20px;
+            transform: translateY(-50%);
+            font-weight: 700;
+            pointer-events: none;
+        }
+
+        .takeaways h2 {
+            color: var(--btc-orange);
+            margin-top: 0;
+        }
+
+        .takeaways h2::after {
+            background: linear-gradient(90deg, var(--btc-orange), var(--btc-accent));
+        }
+
+        .takeaways ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .takeaways li {
+            padding: 0.75rem 0;
+            padding-left: 1.75rem;
+            position: relative;
+            font-size: 1.05rem;
+            transition: transform 0.2s ease;
+        }
+
+        .takeaways li:hover {
+            transform: translateX(4px);
+        }
+
+        .takeaways li::before {
+            content: "\20BF";
+            color: var(--btc-orange);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* ===== GLOSSARY SECTION ===== */
+        .glossary-section {
+            background: white;
+            border-radius: 14px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .glossary-section h2 {
+            margin-top: 0;
+        }
+
+        .glossary-section h2::after {
+            background: linear-gradient(90deg, var(--btc-orange), var(--btc-accent));
+        }
+
+        .glossary-list {
+            columns: 2;
+            column-gap: 2.5rem;
+        }
+
+        .glossary-entry {
+            break-inside: avoid;
+            margin-bottom: 1.25rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+            transition: background 0.2s ease;
+        }
+
+        .glossary-entry:hover {
+            background: #FFF8EE;
+        }
+
+        .glossary-entry dt {
+            font-weight: 700;
+            color: var(--btc-dark);
+            font-size: 1rem;
+            border-bottom: 1.5px dotted var(--btc-orange);
+            display: inline;
+        }
+
+        .glossary-entry dd {
+            margin: 0.25rem 0 0 0;
+            font-size: 0.95rem;
+            color: var(--btc-gray);
+            line-height: 1.5;
+        }
+
+        /* ===== FOOTER ===== */
+        .lesson-footer {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            color: var(--btc-gray);
+            font-size: 0.9rem;
+            border-top: none;
+            position: relative;
+        }
+
+        .lesson-footer::before {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--btc-orange), var(--btc-accent));
+            border-radius: 2px;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* ===== NAV LINKS ===== */
+        .nav-links {
+            display: flex;
+            justify-content: space-between;
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+        }
+
+        .nav-links a, .nav-links span {
+            color: var(--btc-orange);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(247,147,26,0.1);
+            text-decoration: none;
+        }
+
+        /* ===== SECTION BAND SYSTEM ===== */
+        .section-band {
+            position: relative;
+            width: 100%;
+        }
+
+        .section-band .content {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section-band.bg-white {
+            background: #FFFFFF;
+        }
+
+        .section-band.bg-warm {
+            background: #FDF8F0;
+            background-image: radial-gradient(circle, rgba(247,147,26,0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .section-band.bg-cool {
+            background: #EEF1F8;
+            background-image: radial-gradient(circle, rgba(52,152,219,0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .section-band.bg-dark-content {
+            background: linear-gradient(135deg, #0F0F23 0%, var(--btc-dark) 40%, #16213E 100%);
+            color: #E8E8E8;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-band.bg-dark-content::before {
+            content: '$';
+            position: absolute;
+            font-size: 20rem;
+            color: rgba(247,147,26,0.025);
+            top: 50%;
+            right: 5%;
+            transform: translateY(-50%);
+            font-weight: 700;
+            pointer-events: none;
+            font-family: Georgia, serif;
+        }
+
+        .section-band.bg-dark-content h2 {
+            color: #FFFFFF;
+        }
+
+        .section-band.bg-dark-content h3 {
+            color: #D0D0D8;
+        }
+
+        .section-band.bg-dark-content p {
+            color: #D0D0D8;
+        }
+
+        .section-band.bg-dark-content strong {
+            color: #FFFFFF;
+        }
+
+        .section-band.bg-dark-content .glossary-term {
+            color: #FFFFFF;
+            border-bottom-color: var(--btc-accent);
+        }
+
+        .section-band.bg-dark-content .glossary-term:hover {
+            color: var(--btc-orange);
+        }
+
+        .section-band.bg-dark-content .callout-warning {
+            background: linear-gradient(135deg, rgba(231,76,60,0.15) 0%, rgba(231,76,60,0.08) 100%);
+            border-left-color: var(--btc-danger);
+        }
+
+        .section-band.bg-dark-content .callout-warning .callout-title {
+            color: #F7796C;
+        }
+
+        .section-band.bg-dark-content .callout-warning p {
+            color: #D0D0D8;
+        }
+
+        .section-band.bg-dark-content .callout-key {
+            background: linear-gradient(135deg, rgba(247,147,26,0.12) 0%, rgba(247,147,26,0.06) 100%);
+            border-left-color: var(--btc-orange);
+        }
+
+        .section-band.bg-dark-content .callout-key .callout-title {
+            color: var(--btc-accent);
+        }
+
+        .section-band.bg-dark-content .callout-key p {
+            color: #D0D0D8;
+        }
+
+        .section-band.bg-dark-content .diagram {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(247,147,26,0.2);
+        }
+
+        .section-band.bg-dark-content .diagram-title {
+            color: #E8E8E8;
+        }
+
+        .section-band.bg-dark-content .timeline-content {
+            background: rgba(255,255,255,0.07);
+        }
+
+        .section-band.bg-dark-content .timeline-content h4 {
+            color: #FFFFFF;
+        }
+
+        .section-band.bg-dark-content .timeline-content p {
+            color: #B8B8C8;
+        }
+
+        .section-band.bg-dark-content .timeline-content:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .section-band.bg-dark-content .genesis-quote {
+            background: rgba(0,0,0,0.3);
+            border-color: rgba(247,147,26,0.25);
+        }
+
+        .section-band.bg-dark-content .section-number {
+            box-shadow: 0 4px 18px rgba(247,147,26,0.5);
+        }
+
+        /* ===== M2 BAR CHART ===== */
+        .m2-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 0.4rem;
+            height: 280px;
+            padding: 1rem 0 0;
+            position: relative;
+        }
+
+        .m2-bar-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            max-width: 60px;
+        }
+
+        .m2-bar {
+            width: 100%;
+            border-radius: 4px 4px 0 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .m2-bar:hover {
+            transform: scaleY(1.02);
+            box-shadow: 0 0 12px rgba(247,147,26,0.3);
+        }
+
+        .m2-bar-label {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.5);
+            margin-top: 0.4rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .m2-bar-value {
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.8);
+            text-align: center;
+            margin-bottom: 0.2rem;
+            font-weight: 700;
+        }
+
+        .m2-annotation {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--btc-danger);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            animation: annotationPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes annotationPulse {
+            0%, 100% { box-shadow: 0 2px 8px rgba(231,76,60,0.3); }
+            50% { box-shadow: 0 4px 16px rgba(231,76,60,0.6); }
+        }
+
+        /* ===== THREE-COLUMN GRID ===== */
+        .triple-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .triple-grid .comparison-card {
+            border-top-width: 4px;
+            border-top-style: solid;
+        }
+
+        /* Wave Dividers */
+        .wave-divider {
+            position: relative;
+            width: 100%;
+            line-height: 0;
+            margin-top: -1px;
+            margin-bottom: -1px;
+        }
+
+        .wave-divider svg {
+            display: block;
+            width: 100%;
+            height: 60px;
+        }
+
+        /* Section Intro: numbered badge + title */
+        .section-intro {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-number {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--btc-orange), #E8841A);
+            color: white;
+            font-weight: 800;
+            font-size: 1.15rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 18px rgba(247,147,26,0.3);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        .section-intro h2 {
+            margin: 0;
+            padding-bottom: 0;
+        }
+
+        .section-intro h2::after {
+            display: none;
+        }
+
+        /* ===== INLINE SVG GRAPHICS ===== */
+        .svg-graphic {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .svg-graphic svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .purchasing-power-graphic {
+            background: linear-gradient(135deg, var(--btc-dark) 0%, #16213E 100%);
+            border-radius: 14px;
+            padding: 2rem 1.5rem 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 20px rgba(26,26,46,0.2);
+            border: 1px solid rgba(247,147,26,0.15);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .purchasing-power-graphic .graphic-title {
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
+        }
+
+        .dollar-shrink-row {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            gap: 0.5rem;
+            padding: 0 1rem;
+        }
+
+        .dollar-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .dollar-unit .year-label {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.4);
+            font-weight: 600;
+        }
+
+        .dollar-unit .value-label {
+            font-size: 0.85rem;
+            color: var(--btc-orange);
+            font-weight: 700;
+        }
+
+        .money-printer-graphic {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        /* ===== SCROLL ENTRANCE ANIMATIONS ===== */
+        .animate-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger children in grids */
+        .comparison-grid .animate-in:nth-child(2) { transition-delay: 0.1s; }
+        .comparison-grid .animate-in:nth-child(3) { transition-delay: 0.2s; }
+        .comparison-grid .animate-in:nth-child(4) { transition-delay: 0.3s; }
+
+        .triple-grid .animate-in:nth-child(2) { transition-delay: 0.15s; }
+        .triple-grid .animate-in:nth-child(3) { transition-delay: 0.3s; }
+
+        .stat-row .animate-in:nth-child(2) { transition-delay: 0.15s; }
+        .stat-row .animate-in:nth-child(3) { transition-delay: 0.3s; }
+
+        .timeline .animate-in:nth-child(2) { transition-delay: 0.1s; }
+        .timeline .animate-in:nth-child(3) { transition-delay: 0.2s; }
+        .timeline .animate-in:nth-child(4) { transition-delay: 0.3s; }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            .lesson-header { background: white; color: black; border-bottom: 3px solid black; }
+            .lesson-header .level-tag { border: 2px solid black; background: white; color: black; }
+            .lesson-header h1 { text-shadow: none; }
+            .lesson-header::before { display: none; }
+            .takeaways { background: white; color: black; border: 2px solid black; }
+            .takeaways::before { display: none; }
+            .takeaways h2 { color: black; }
+            .takeaways li::before { color: black; }
+            .genesis-quote { background: white; color: black; border: 2px solid black; }
+            .genesis-quote::before, .genesis-quote::after { display: none; }
+            .genesis-quote .quote-text { color: black; text-shadow: none; }
+            .nav-links { display: none; }
+            .stat-number { color: black; -webkit-text-fill-color: unset; background: none; filter: none; }
+            .glossary-term { border-bottom: 1px solid #999; font-weight: 600; }
+            .glossary-bubble { display: none !important; }
+            .animate-in { opacity: 1 !important; transform: none !important; }
+            .flow-step.problem { animation: none; }
+            body { background: white; }
+            .section-band { background: white !important; color: black !important; }
+            .section-band p, .section-band li, .section-band h3 { color: #333 !important; }
+            .wave-divider { display: none; }
+            .section-number { border: 2px solid black; background: white; color: black; -webkit-text-fill-color: black; box-shadow: none; }
+        }
+
+        /* ===== RESPONSIVE STYLES ===== */
+        @media (max-width: 600px) {
+            .lesson-header { padding: 3rem 1.5rem 2.5rem; }
+            .lesson-header h1 { font-size: 2rem; }
+            .lesson-header::before { font-size: 10rem; }
+            .lesson-header .subtitle { font-size: 1rem; }
+
+            .comparison-grid, .triple-grid { grid-template-columns: 1fr; }
+            .stat-row { flex-direction: column; align-items: center; }
+            .flow-diagram { flex-direction: column; }
+            .flow-arrow { transform: rotate(90deg); }
+
+            .genesis-quote { padding: 2rem 1.5rem; }
+            .genesis-quote .quote-text { font-size: 1.2rem; }
+            .genesis-quote::before, .genesis-quote::after { font-size: 5rem; }
+
+            .stat-number { font-size: 2.2rem; }
+            .takeaways::before { font-size: 8rem; }
+
+            .glossary-list { columns: 1; }
+            .glossary-bubble { width: 260px; }
+
+            .section-band .content { padding: 2rem 1.5rem; }
+            .section-intro { gap: 1rem; }
+            .section-number { width: 44px; height: 44px; font-size: 1rem; border-radius: 12px; }
+            .wave-divider svg { height: 40px; }
+
+            .m2-chart { height: 200px; gap: 0.2rem; }
+            .m2-bar-label { font-size: 0.6rem; }
+            .m2-bar-value { font-size: 0.55rem; }
+
+            .purchasing-power-graphic { padding: 1.2rem 0.5rem 1rem; }
+            .purchasing-power-graphic .graphic-title { font-size: 0.75rem; }
+
+            /* Tables: scrollable on mobile */
+            .diagram, .content {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            table {
+                min-width: 480px;
+            }
+            th, td {
+                padding: 0.6rem 0.75rem;
+                font-size: 0.82rem;
+            }
+        }
+    
+
+        /* ===== ACCESS GATE ===== */
+        .access-gate {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 10000;
+            background: linear-gradient(135deg, #0F0F23 0%, #1A1A2E 40%, #16213E 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .access-gate.unlocked {
+            display: none;
+        }
+        .gate-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(247,147,26,0.2);
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            max-width: 420px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        .gate-logo {
+            font-size: 5rem;
+            color: #F7931A;
+            font-family: Georgia, serif;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 40px rgba(247,147,26,0.3);
+        }
+        .gate-title {
+            color: #FFFFFF;
+            font-family: Georgia, serif;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+        .gate-subtitle {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+        .gate-input {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 2px solid rgba(247,147,26,0.3);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.06);
+            color: #FFFFFF;
+            font-size: 1.1rem;
+            text-align: center;
+            letter-spacing: 0.15em;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .gate-input::placeholder {
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 0.05em;
+        }
+        .gate-input:focus {
+            border-color: #F7931A;
+            box-shadow: 0 0 20px rgba(247,147,26,0.15);
+        }
+        .gate-btn {
+            width: 100%;
+            padding: 0.9rem;
+            margin-top: 1rem;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #F7931A 0%, #E8B84B 100%);
+            color: #1A1A2E;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 0.03em;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .gate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(247,147,26,0.35);
+        }
+        .gate-error {
+            color: #E74C3C;
+            font-size: 0.9rem;
+            margin-top: 0.75rem;
+            min-height: 1.3em;
+        }
+        .lesson-content-wrapper {
+            display: none;
+        }
+        .lesson-content-wrapper.visible {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== ACCESS GATE ===== -->
+    <div class="access-gate" id="accessGate">
+        <div class="gate-card">
+            <div class="gate-logo">&#x20BF;</div>
+            <div class="gate-title">Bitcoin Education</div>
+            <div class="gate-subtitle">Enter your access code to begin</div>
+            <input type="text" class="gate-input" id="gateCode" placeholder="Access Code" autocomplete="off" autofocus>
+            <button class="gate-btn" id="gateBtn" onclick="checkAccess()">Unlock Course</button>
+            <div class="gate-error" id="gateError"></div>
+        </div>
+    </div>
+
+    <!-- ===== LESSON CONTENT (hidden until unlocked) ===== -->
+    <div class="lesson-content-wrapper" id="lessonContent">
+
+
+
+    <!-- ===== HEADER ===== -->
+    <header class="lesson-header">
+        <span class="level-tag">Beginner • Lesson 1 of 10</span>
+        <h1>What is Money?</h1>
+        <p class="subtitle">Everyone feels the pain. Few understand what's causing it.</p>
+    </header>
+
+    <!-- ===== SECTION 1: Something Doesn't Add Up ===== -->
+    <section class="section-band bg-white">
+        <div class="content">
+            <div class="section-intro">
+                <span class="section-number">01</span>
+                <h2>Something Doesn't Add Up</h2>
+            </div>
+
+            <div class="callout callout-warning" style="margin-top: 0;">
+                <div class="callout-title">Think About This</div>
+                <p>Your parents bought a house on a single income. You need two incomes just to rent an apartment. Your grandparents raised a family of five on a factory worker's salary. You have a college degree and still live paycheck to paycheck. Gas was $1.00/gallon when your dad learned to drive. Now it's over $3.00. A dozen eggs used to cost less than a dollar — in early 2023, it hit $4.82.</p>
+                <p>You're told the economy is growing. So why does it feel like you're falling behind?</p>
+            </div>
+
+            <p>Most people describe this feeling the same way: <em>"Prices keep going up."</em> That's what it <em>looks</em> like. But that's not what's actually happening.</p>
+
+            <p><strong>Prices aren't going up. Your dollar is going down.</strong></p>
+
+            <!-- Shrinking Dollar Visual -->
+            <div class="svg-graphic animate-in">
+                <svg viewBox="0 0 700 160" xmlns="http://www.w3.org/2000/svg" style="max-width:600px">
+                    <!-- Background -->
+                    <rect x="0" y="0" width="700" height="160" rx="14" fill="#1A1A2E"/>
+                    <rect x="0" y="0" width="700" height="160" rx="14" fill="url(#shrinkGrad)" opacity="0.15"/>
+                    <defs>
+                        <linearGradient id="shrinkGrad" x1="0" y1="0" x2="700" y2="0">
+                            <stop offset="0%" stop-color="#F7931A"/>
+                            <stop offset="100%" stop-color="#E74C3C"/>
+                        </linearGradient>
+                        <linearGradient id="arrowGrad" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0%" stop-color="#F7931A"/>
+                            <stop offset="100%" stop-color="#E74C3C"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- Label -->
+                    <text x="350" y="24" fill="rgba(255,255,255,0.45)" font-size="11" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif" letter-spacing="0.1em">WHAT YOUR DOLLAR BUYS OVER TIME</text>
+                    <!-- Dollar signs shrinking left to right -->
+                    <text x="80" y="105" fill="#F7931A" font-size="72" font-weight="700" text-anchor="middle" font-family="Georgia, serif" opacity="1">$</text>
+                    <text x="80" y="130" fill="rgba(255,255,255,0.5)" font-size="12" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">1913</text>
+
+                    <text x="210" y="105" fill="#E8B84B" font-size="56" font-weight="700" text-anchor="middle" font-family="Georgia, serif" opacity="0.85">$</text>
+                    <text x="210" y="130" fill="rgba(255,255,255,0.4)" font-size="12" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">1950</text>
+
+                    <text x="340" y="105" fill="#E8B84B" font-size="40" font-weight="700" text-anchor="middle" font-family="Georgia, serif" opacity="0.65">$</text>
+                    <text x="340" y="130" fill="rgba(255,255,255,0.35)" font-size="12" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">1980</text>
+
+                    <text x="460" y="105" fill="#D4A043" font-size="26" font-weight="700" text-anchor="middle" font-family="Georgia, serif" opacity="0.5">$</text>
+                    <text x="460" y="130" fill="rgba(255,255,255,0.3)" font-size="12" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">2000</text>
+
+                    <text x="565" y="105" fill="#E74C3C" font-size="14" font-weight="700" text-anchor="middle" font-family="Georgia, serif" opacity="0.4">$</text>
+                    <text x="565" y="130" fill="rgba(255,255,255,0.3)" font-size="12" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">2024</text>
+
+                    <!-- Downward trend arrow -->
+                    <line x1="100" y1="52" x2="590" y2="92" stroke="url(#arrowGrad)" stroke-width="2.5" stroke-dasharray="6,4" opacity="0.6"/>
+                    <polygon points="590,85 600,92 590,99" fill="#E74C3C" opacity="0.6"/>
+
+                    <!-- Caption -->
+                    <text x="640" y="95" fill="#E74C3C" font-size="11" font-weight="700" text-anchor="middle" font-family="Segoe UI, sans-serif" opacity="0.8">−97%</text>
+                </svg>
+            </div>
+
+            <p>Every year, each dollar you hold buys a little bit less. The coffee. The gas. The rent. It all costs "more" — but only because the dollars you're paying with are worth <em>less</em> than they used to be. This isn't bad luck, and it isn't greed. It's the predictable result of a system that creates new money faster than the economy creates new goods.</p>
+
+            <p>More dollars chasing not that much more stuff. That's the formula. And it's been running for decades.</p>
+
+            <div class="callout callout-key">
+                <div class="callout-title">Key Insight</div>
+                <p>When someone says "prices are rising," flip it in your mind: <strong>the dollar is losing <span class="glossary-term" data-term="purchasing-power">purchasing power</span>.</strong> It's not that things are getting more expensive — it's that your money is getting weaker.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Wave: white → warm -->
+    <div class="wave-divider" style="background:#FFFFFF">
+        <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path fill="#FDF8F0" d="M0,20C360,55,720,5,1080,35C1280,50,1400,40,1440,30L1440,60L0,60Z"/>
+        </svg>
+    </div>
+
+    <!-- ===== SECTION 2: Money — The Tool That Changed Everything ===== -->
+    <section class="section-band bg-warm">
+        <div class="content">
+            <div class="section-intro">
+                <span class="section-number">02</span>
+                <h2>Money: The Tool That Changed Everything</h2>
+            </div>
+
+            <p>Before money, humans had to barter — trade goods directly with each other. If you raised chickens and needed shoes, you had to find a shoemaker who wanted chickens, at the exact time you both had something to trade. Economists call this the <span class="glossary-term" data-term="double-coincidence-of-wants">double coincidence of wants</span>, and it's a terrible way to build an economy.</p>
+
+            <div class="diagram">
+                <div class="diagram-title">The Barter Problem</div>
+                <div class="flow-diagram">
+                    <div class="flow-step">🐔 You Have Chickens</div>
+                    <div class="flow-arrow">↔</div>
+                    <div class="flow-step problem">Need: Shoemaker Who Wants Chickens</div>
+                    <div class="flow-arrow">↔</div>
+                    <div class="flow-step">👞 You Need Shoes</div>
+                </div>
+                <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: var(--btc-gray);">
+                    Without money, every trade requires both parties to want exactly what the other has — at the same time and place.
+                </p>
+            </div>
+
+            <p><span class="glossary-term" data-term="money">Money</span> solves this problem. It's a tool — an intermediary good that everyone agrees to accept, so you can sell your chickens to anyone, hold the value, and buy shoes whenever you want. Good money needs to serve three roles:</p>
+
+            <div class="stat-row">
+                <div class="stat-card animate-in">
+                    <div class="stat-number" style="font-size: 1.8rem;">💱</div>
+                    <div class="stat-label"><span class="glossary-term" data-term="medium-of-exchange" style="color: rgba(255,255,255,0.7); border-bottom-color: var(--btc-accent);">Medium of Exchange</span></div>
+                </div>
+                <div class="stat-card animate-in">
+                    <div class="stat-number" style="font-size: 1.8rem;">🏦</div>
+                    <div class="stat-label"><span class="glossary-term" data-term="store-of-value" style="color: rgba(255,255,255,0.7); border-bottom-color: var(--btc-accent);">Store of Value</span></div>
+                </div>
+                <div class="stat-card animate-in">
+                    <div class="stat-number" style="font-size: 1.8rem;">📏</div>
+                    <div class="stat-label"><span class="glossary-term" data-term="unit-of-account" style="color: rgba(255,255,255,0.7); border-bottom-color: var(--btc-accent);">Unit of Account</span></div>
+                </div>
+            </div>
+
+            <p>Throughout history, people have used shells, beads, salt, cattle, and dozens of other things as money. But over time, <strong>money always trends toward one</strong> — the one thing that best holds value, is hardest to produce more of, and is most widely accepted.</p>
+
+            <p>For thousands of years, that was <span class="glossary-term" data-term="gold">gold</span>. Gold is rare, it doesn't rust or corrode, it's divisible, and you can't just print more of it. Gold earned its role as money because of its physical properties — not because any government declared it.</p>
+
+            <div class="callout callout-example">
+                <div class="callout-title">A Real Pattern</div>
+                <p>Every civilization that discovered gold independently — from the Egyptians to the Aztecs to the Chinese — came to the same conclusion: <strong>this is money.</strong> Not because they talked to each other. Because gold has the right properties. Money isn't chosen by decree. It's discovered through competition.</p>
+            </div>
+
+            <p>Eventually, carrying gold became impractical. Governments created paper currencies backed by gold — a receipt that said "this note can be exchanged for gold at the bank." That system worked, until governments decided they wanted to spend more than their gold could back.</p>
+
+            <p>In 1971, President Nixon officially ended the gold standard. The dollar was no longer redeemable for gold. The money you carry today is <span class="glossary-term" data-term="fiat-currency">fiat currency</span> — it has value because the government says it does, and because everyone agrees to accept it. There is nothing backing it except trust.</p>
+
+            <div class="callout callout-key">
+                <div class="callout-title">Key Concept</div>
+                <p><strong>Money trends toward one.</strong> Historically that was gold. Currently it's the US dollar. But the dollar's reign depends on one thing: people's continued trust that it will hold value. What happens when that trust erodes?</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Wave: warm → white -->
+    <div class="wave-divider" style="background:#FDF8F0">
+        <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path fill="#FFFFFF" d="M0,30C240,10,480,50,720,25C960,50,1200,10,1440,30L1440,60L0,60Z"/>
+        </svg>
+    </div>
+
+    <!-- ===== SECTION 3: The Long Drain ===== -->
+    <section class="section-band bg-white">
+        <div class="content">
+            <div class="section-intro">
+                <span class="section-number">03</span>
+                <h2>The Long Drain</h2>
+            </div>
+
+            <p>If the dollar is losing value, you should be able to see it — and you can. Not in any single price spike, but in the long, relentless trend that stretches back decades. Look at the numbers:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>1970</th>
+                        <th>1990</th>
+                        <th>2000</th>
+                        <th>2024</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Median Home Price</strong></td>
+                        <td>$23,000</td>
+                        <td>$79,100</td>
+                        <td>$119,600</td>
+                        <td>$420,400</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gallon of Gas</strong></td>
+                        <td>$0.36</td>
+                        <td>$1.16</td>
+                        <td>$1.51</td>
+                        <td>$3.50</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dozen Eggs</strong></td>
+                        <td>$0.62</td>
+                        <td>$1.00</td>
+                        <td>$0.96</td>
+                        <td>$3.20</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gallon of Milk</strong></td>
+                        <td>$1.15</td>
+                        <td>$2.15</td>
+                        <td>$2.79</td>
+                        <td>$4.05</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Median Household Income</strong></td>
+                        <td>$9,870</td>
+                        <td>$29,940</td>
+                        <td>$41,990</td>
+                        <td>$80,610</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>At first glance, it looks like wages went up too. But watch the ratios. In 1970, the median home cost <strong>2.3x</strong> the median income. In 2024, it costs <strong>5.2x</strong>. You're earning "more" dollars, but each dollar buys less house, less food, less gas, less life.</p>
+
+            <div class="stat-row">
+                <div class="stat-card animate-in">
+                    <div class="stat-number" data-count-to="97" data-suffix="%">0%</div>
+                    <div class="stat-label">Dollar's Value Lost Since 1913</div>
+                </div>
+                <div class="stat-card animate-in">
+                    <div class="stat-number" data-count-to="1730" data-suffix="%" data-decimals="0">0%</div>
+                    <div class="stat-label">Home Price Increase Since 1970</div>
+                </div>
+                <div class="stat-card animate-in">
+                    <div class="stat-number" data-count-to="717" data-suffix="%" data-decimals="0">0%</div>
+                    <div class="stat-label">Income Increase Since 1970</div>
+                </div>
+            </div>
+
+            <!-- Purchasing Power Decline Graphic -->
+            <div class="purchasing-power-graphic animate-in">
+                <div class="graphic-title">Purchasing Power of $1 (1913 → 2024)</div>
+                <svg viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto">
+                    <defs>
+                        <linearGradient id="ppLine" x1="0" y1="0" x2="680" y2="0">
+                            <stop offset="0%" stop-color="#F7931A"/>
+                            <stop offset="100%" stop-color="#E74C3C"/>
+                        </linearGradient>
+                        <linearGradient id="ppFill" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#F7931A" stop-opacity="0.25"/>
+                            <stop offset="100%" stop-color="#E74C3C" stop-opacity="0.03"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- Grid lines -->
+                    <line x1="60" y1="30" x2="640" y2="30" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                    <line x1="60" y1="70" x2="640" y2="70" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                    <line x1="60" y1="110" x2="640" y2="110" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                    <line x1="60" y1="150" x2="640" y2="150" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                    <!-- Y-axis labels -->
+                    <text x="50" y="35" fill="rgba(255,255,255,0.35)" font-size="10" text-anchor="end" font-family="Segoe UI, sans-serif">$1.00</text>
+                    <text x="50" y="75" fill="rgba(255,255,255,0.35)" font-size="10" text-anchor="end" font-family="Segoe UI, sans-serif">$0.75</text>
+                    <text x="50" y="115" fill="rgba(255,255,255,0.35)" font-size="10" text-anchor="end" font-family="Segoe UI, sans-serif">$0.50</text>
+                    <text x="50" y="155" fill="rgba(255,255,255,0.35)" font-size="10" text-anchor="end" font-family="Segoe UI, sans-serif">$0.25</text>
+                    <!-- Decline curve (fill area) -->
+                    <path d="M60,30 C120,32 180,40 240,55 C300,72 340,90 400,115 C440,130 500,142 540,148 L640,155 L640,170 L60,170 Z" fill="url(#ppFill)"/>
+                    <!-- Decline curve (line) -->
+                    <path d="M60,30 C120,32 180,40 240,55 C300,72 340,90 400,115 C440,130 500,142 540,148 L640,155" fill="none" stroke="url(#ppLine)" stroke-width="3" stroke-linecap="round"/>
+                    <!-- Key points -->
+                    <circle cx="60" cy="30" r="5" fill="#F7931A"/>
+                    <circle cx="240" cy="55" r="4" fill="#E8B84B"/>
+                    <circle cx="400" cy="115" r="4" fill="#D4854A"/>
+                    <circle cx="640" cy="155" r="5" fill="#E74C3C"/>
+                    <!-- Point labels -->
+                    <text x="60" y="18" fill="#F7931A" font-size="11" font-weight="700" text-anchor="middle" font-family="Segoe UI, sans-serif">$1.00</text>
+                    <text x="240" y="46" fill="#E8B84B" font-size="10" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">$0.64</text>
+                    <text x="400" y="106" fill="#D4854A" font-size="10" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">$0.25</text>
+                    <text x="640" y="146" fill="#E74C3C" font-size="11" font-weight="700" text-anchor="middle" font-family="Segoe UI, sans-serif">$0.03</text>
+                    <!-- X-axis dates -->
+                    <text x="60" y="190" fill="rgba(255,255,255,0.4)" font-size="11" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">1913</text>
+                    <text x="240" y="190" fill="rgba(255,255,255,0.35)" font-size="11" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">1950</text>
+                    <text x="400" y="190" fill="rgba(255,255,255,0.35)" font-size="11" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">1985</text>
+                    <text x="640" y="190" fill="rgba(255,255,255,0.4)" font-size="11" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">2024</text>
+                    <!-- Fed Reserve marker -->
+                    <line x1="60" y1="30" x2="60" y2="170" stroke="rgba(247,147,26,0.3)" stroke-width="1" stroke-dasharray="4,3"/>
+                    <text x="67" y="168" fill="rgba(247,147,26,0.5)" font-size="8" font-family="Segoe UI, sans-serif">Fed Created</text>
+                </svg>
+            </div>
+
+            <p>That 97% figure isn't an accident of history — notice the date. 1913 is when the <span class="glossary-term" data-term="federal-reserve">Federal Reserve</span> was created, giving a central bank the power to expand the money supply. The dollar has been on a one-way trip downward ever since.</p>
+
+            <p>Homes went up 1,730%. Incomes only went up 717%. That gap isn't supply and demand. Supply and demand causes <em>short-term</em> fluctuations — a drought drives up egg prices for a season, a housing boom inflates one city's market. But when <strong>everything</strong> gets more expensive, consistently, for 50+ years? That's not any single market. That's the money itself.</p>
+
+            <div class="callout callout-warning">
+                <div class="callout-title">This Is Not Supply and Demand</div>
+                <p>When gas goes up one summer because of a refinery shutdown — that's supply and demand. When gas, <em>and</em> eggs, <em>and</em> milk, <em>and</em> housing, <em>and</em> healthcare, <em>and</em> tuition all go up relentlessly for decades? There's only one thing they all have in common: <strong>they're all priced in the same dollars.</strong> The problem isn't the goods. The problem is the unit of measurement.</p>
+            </div>
+
+            <p>This is <span class="glossary-term" data-term="inflation">inflation</span> — not "prices going up," but the <span class="glossary-term" data-term="money-supply">money supply</span> expanding faster than the supply of goods and services. More dollars chasing not that much more stuff. Every new dollar created dilutes every dollar already in your pocket.</p>
+
+            <div class="genesis-quote">
+                <div class="quote-text">"Inflation is taxation without legislation."</div>
+                <div class="quote-source">— Milton Friedman, Nobel Prize-winning economist</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wave: white → warm -->
+    <div class="wave-divider" style="background:#FFFFFF">
+        <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path fill="#FDF8F0" d="M0,15C300,50,600,0,900,40C1150,55,1350,25,1440,35L1440,60L0,60Z"/>
+        </svg>
+    </div>
+
+    <!-- ===== SECTION 4: When Innovation Beats the Printer ===== -->
+    <section class="section-band bg-warm">
+        <div class="content">
+            <div class="section-intro">
+                <span class="section-number">04</span>
+                <h2>When Innovation Beats the Printer</h2>
+            </div>
+
+            <p>If money printing makes everything more expensive, why are some things getting <em>cheaper</em>? Great question — and the answer actually proves the point.</p>
+
+            <div class="callout callout-example">
+                <div class="callout-title">A Real Example</div>
+                <p>In 1997, a 32-inch standard-definition TV cost around <strong>$1,000</strong>. Today, you can buy a <strong>65-inch 4K smart TV</strong> — four times the screen size, incomparably better picture, built-in streaming — for under <strong>$400</strong>. That's a better product at a fraction of the price.</p>
+            </div>
+
+            <p>Here's what happened: technology and manufacturing got so much more efficient that the cost of production <em>fell faster than the money printer could dilute the dollar</em>. Innovation outran <span class="glossary-term" data-term="inflation">inflation</span>.</p>
+
+            <p>You see this in computing, electronics, solar panels, and communication. The cost of a gigabyte of storage was $300,000 in 1980. Today it's about $0.015. That's not because the dollar got stronger — it's because human productivity and innovation are <em>that</em> powerful.</p>
+
+            <div class="callout callout-key">
+                <div class="callout-title">The Hidden Truth</div>
+                <p>In a world without money printing, <strong>most things should be getting cheaper over time</strong> — not more expensive. As technology improves and production becomes more efficient, prices should naturally fall. The fact that they don't — that your grocery bill keeps climbing despite incredible advances in farming, logistics, and technology — tells you exactly how aggressively the money supply is expanding. <strong>Inflation is stealing the gains that innovation should be giving you.</strong></p>
+            </div>
+
+            <div class="genesis-quote">
+                <div class="quote-text">"The natural state of a free market is that prices fall to the marginal cost of production."</div>
+                <div class="quote-source">— Jeff Booth, <em>The Price of Tomorrow</em></div>
+            </div>
+
+            <p>Think about what that means. In a free market with honest money, competition and innovation should drive prices <em>down</em> toward what it actually costs to make something. That's progress working in your favor. But when the money supply is constantly expanding, it masks that progress — you never see the savings. Prices stay flat or climb, and you assume that's normal. It's not. You're being robbed of a future where life gets cheaper every year.</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-card good animate-in">
+                    <h4><span class="icon-circle icon-green">📉</span> Innovation Wins (Prices Fall)</h4>
+                    <ul>
+                        <li>TVs and electronics</li>
+                        <li>Computing power</li>
+                        <li>Data storage</li>
+                        <li>Solar panels</li>
+                        <li>Communication costs</li>
+                    </ul>
+                </div>
+                <div class="comparison-card animate-in">
+                    <h4><span class="icon-circle icon-red">📈</span> Money Printer Wins (Prices Rise)</h4>
+                    <ul>
+                        <li class="con">Housing</li>
+                        <li class="con">Healthcare</li>
+                        <li class="con">College tuition</li>
+                        <li class="con">Groceries and food</li>
+                        <li class="con">Childcare</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p>Notice the pattern: the things that are getting more expensive are the things you <em>need</em> — shelter, food, health, education. The things getting cheaper are the things technology can disrupt faster than the government can print. When the things you can't live without keep costing more, that's not progress. That's a broken monetary system.</p>
+
+        </div>
+    </section>
+
+    <!-- Wave: warm → dark -->
+    <div class="wave-divider" style="background:#FDF8F0">
+        <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path fill="#0F0F23" d="M0,25L360,40L720,15L1080,45L1440,20L1440,60L0,60Z"/>
+        </svg>
+    </div>
+
+    <!-- ===== SECTION 5: 40% of All Dollars (Dark Emphasis) ===== -->
+    <section class="section-band bg-dark-content">
+        <div class="content">
+            <div class="section-intro">
+                <span class="section-number">05</span>
+                <h2>40% of All Dollars Ever Created</h2>
+            </div>
+
+            <p>Everything described above has been happening gradually for decades. But in 2020, the pace went from a steady drip to a firehose.</p>
+
+            <p>When COVID-19 shut down the economy, the US government responded with trillions in stimulus spending. The Federal Reserve created new money on an unprecedented scale. The <span class="glossary-term" data-term="m2">M2 money supply</span> — a measure of all dollars in circulation including savings and money market accounts — tells the story:</p>
+
+            <div class="diagram">
+                <div class="diagram-title">US M2 Money Supply (Trillions of Dollars)</div>
+                <div class="m2-chart">
+                    <div class="m2-annotation">+40% in ~4 years</div>
+                    <div class="m2-bar-group">
+                        <div class="m2-bar-value">$4.6T</div>
+                        <div class="m2-bar" style="height: 35px; background: linear-gradient(to top, #3498DB, #5DADE2);"></div>
+                        <div class="m2-bar-label">2000</div>
+                    </div>
+                    <div class="m2-bar-group">
+                        <div class="m2-bar-value">$6.5T</div>
+                        <div class="m2-bar" style="height: 50px; background: linear-gradient(to top, #3498DB, #5DADE2);"></div>
+                        <div class="m2-bar-label">2005</div>
+                    </div>
+                    <div class="m2-bar-group">
+                        <div class="m2-bar-value">$8.5T</div>
+                        <div class="m2-bar" style="height: 65px; background: linear-gradient(to top, #3498DB, #5DADE2);"></div>
+                        <div class="m2-bar-label">2010</div>
+                    </div>
+                    <div class="m2-bar-group">
+                        <div class="m2-bar-value">$12.3T</div>
+                        <div class="m2-bar" style="height: 95px; background: linear-gradient(to top, #3498DB, #5DADE2);"></div>
+                        <div class="m2-bar-label">2015</div>
+                    </div>
+                    <div class="m2-bar-group">
+                        <div class="m2-bar-value">$15.4T</div>
+                        <div class="m2-bar" style="height: 118px; background: linear-gradient(to top, #3498DB, #5DADE2);"></div>
+                        <div class="m2-bar-label">2020</div>
+                    </div>
+                    <div class="m2-bar-group">
+                        <div class="m2-bar-value">$21.7T</div>
+                        <div class="m2-bar" style="height: 168px; background: linear-gradient(to top, var(--btc-danger), #E74C3C);"></div>
+                        <div class="m2-bar-label">2022</div>
+                    </div>
+                    <div class="m2-bar-group">
+                        <div class="m2-bar-value">$21.2T</div>
+                        <div class="m2-bar" style="height: 164px; background: linear-gradient(to top, var(--btc-danger), #C0392B);"></div>
+                        <div class="m2-bar-label">2024</div>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 1.2rem; font-size: 0.85rem; color: rgba(255,255,255,0.5);">
+                    Source: Federal Reserve Economic Data (FRED). Red bars highlight the post-2020 surge.
+                </p>
+            </div>
+
+            <p>Read that chart carefully. It took <strong>200+ years</strong> (from the founding of the republic through early 2020) to put ~$15.4 trillion into circulation. Then the money supply exploded — <strong>growing by roughly 40%</strong> in just two years, jumping to over $21 trillion by 2022 and remaining at that elevated level through 2024. Over <strong>$6 trillion in new dollars</strong> were injected into the system, and that new baseline hasn't come back down.</p>
+
+            <!-- Money Printer Graphic -->
+            <div class="money-printer-graphic animate-in">
+                <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" style="max-width:600px">
+                    <defs>
+                        <linearGradient id="printerBody" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#4A4A68"/>
+                            <stop offset="100%" stop-color="#2A2A42"/>
+                        </linearGradient>
+                        <linearGradient id="billGrad" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0%" stop-color="#2ECC71" stop-opacity="0.9"/>
+                            <stop offset="100%" stop-color="#27AE60" stop-opacity="0.7"/>
+                        </linearGradient>
+                    </defs>
+
+                    <!-- Label -->
+                    <text x="350" y="20" fill="rgba(255,255,255,0.35)" font-size="11" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif" letter-spacing="0.08em">THE MONEY PRINTER</text>
+
+                    <!-- Printer body -->
+                    <rect x="180" y="50" width="200" height="90" rx="10" fill="url(#printerBody)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+                    <!-- Feed slot -->
+                    <rect x="195" y="55" width="170" height="12" rx="3" fill="rgba(0,0,0,0.3)"/>
+                    <!-- Printer label -->
+                    <text x="280" y="100" fill="rgba(255,255,255,0.35)" font-size="11" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">FEDERAL RESERVE</text>
+                    <!-- Power light -->
+                    <circle cx="200" cy="125" r="4" fill="#E74C3C">
+                        <animate attributeName="opacity" values="1;0.4;1" dur="1.5s" repeatCount="indefinite"/>
+                    </circle>
+                    <!-- Output slot -->
+                    <rect x="195" y="128" width="170" height="8" rx="2" fill="rgba(0,0,0,0.4)"/>
+
+                    <!-- Bills coming out - staggered with animation -->
+                    <g opacity="0.9">
+                        <rect x="210" y="140" width="120" height="28" rx="4" fill="url(#billGrad)" stroke="rgba(255,255,255,0.15)" stroke-width="0.5">
+                            <animate attributeName="y" values="130;165" dur="2s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="1;0.3" dur="2s" repeatCount="indefinite"/>
+                        </rect>
+                        <text x="270" y="158" fill="rgba(255,255,255,0.7)" font-size="12" font-weight="700" text-anchor="middle" font-family="Georgia, serif">
+                            <animate attributeName="y" values="148;183" dur="2s" repeatCount="indefinite"/>
+                            $  $  $  $
+                        </text>
+                    </g>
+
+                    <g opacity="0.7">
+                        <rect x="225" y="140" width="120" height="28" rx="4" fill="url(#billGrad)" stroke="rgba(255,255,255,0.1)" stroke-width="0.5">
+                            <animate attributeName="y" values="130;170" dur="2.3s" begin="0.4s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.8;0.15" dur="2.3s" begin="0.4s" repeatCount="indefinite"/>
+                        </rect>
+                        <text x="285" y="158" fill="rgba(255,255,255,0.5)" font-size="12" font-weight="700" text-anchor="middle" font-family="Georgia, serif">
+                            <animate attributeName="y" values="148;178" dur="2.3s" begin="0.4s" repeatCount="indefinite"/>
+                            $  $  $  $
+                        </text>
+                    </g>
+
+                    <!-- "Your savings" on the left shrinking -->
+                    <text x="80" y="80" fill="rgba(255,255,255,0.5)" font-size="10" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">YOUR</text>
+                    <text x="80" y="94" fill="rgba(255,255,255,0.5)" font-size="10" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">SAVINGS</text>
+                    <text x="80" y="125" fill="#E74C3C" font-size="32" font-weight="700" text-anchor="middle" font-family="Georgia, serif">$</text>
+                    <text x="80" y="125" fill="#E74C3C" font-size="32" font-weight="700" text-anchor="middle" font-family="Georgia, serif" opacity="0.3">
+                        <animate attributeName="font-size" values="32;22" dur="3s" repeatCount="indefinite"/>
+                        $
+                    </text>
+                    <!-- Arrow showing dilution -->
+                    <line x1="125" y1="105" x2="168" y2="85" stroke="#E74C3C" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.5"/>
+                    <polygon points="165,80 175,85 168,90" fill="#E74C3C" opacity="0.5"/>
+
+                    <!-- Impact label on the right -->
+                    <text x="490" y="75" fill="rgba(255,255,255,0.45)" font-size="10" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">EVERY NEW DOLLAR</text>
+                    <text x="490" y="90" fill="rgba(255,255,255,0.45)" font-size="10" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">DILUTES YOURS</text>
+
+                    <!-- Dripping effect dots -->
+                    <circle cx="490" cy="110" r="3" fill="#E74C3C" opacity="0.6">
+                        <animate attributeName="cy" values="110;135" dur="1.8s" repeatCount="indefinite"/>
+                        <animate attributeName="opacity" values="0.6;0" dur="1.8s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="510" cy="110" r="2.5" fill="#E74C3C" opacity="0.5">
+                        <animate attributeName="cy" values="110;130" dur="1.5s" begin="0.3s" repeatCount="indefinite"/>
+                        <animate attributeName="opacity" values="0.5;0" dur="1.5s" begin="0.3s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="470" cy="110" r="2" fill="#E74C3C" opacity="0.4">
+                        <animate attributeName="cy" values="110;128" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+                        <animate attributeName="opacity" values="0.4;0" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+                    </circle>
+
+                    <!-- Bottom caption -->
+                    <text x="350" y="210" fill="rgba(255,255,255,0.3)" font-size="10" text-anchor="middle" font-family="Segoe UI, sans-serif" font-style="italic">Over $6 trillion created in ~2 years. No vote. No permission. No way to opt out.</text>
+                </svg>
+            </div>
+
+            <div class="stat-row">
+                <div class="stat-card animate-in">
+                    <div class="stat-number" data-count-to="40" data-suffix="%">0%</div>
+                    <div class="stat-label">Money Supply Growth Since 2020</div>
+                </div>
+                <div class="stat-card animate-in">
+                    <div class="stat-number" style="font-size: 2.2rem;">~$6T</div>
+                    <div class="stat-label">New Dollars in ~2 Years</div>
+                </div>
+            </div>
+
+            <p>And what happened next? Exactly what you'd expect. In June 2022, inflation hit <strong>9.1%</strong> — the highest in 40 years. Groceries surged. Rent spiked. Gas hit $5/gallon in many states. The dollars you'd been saving were suddenly worth dramatically less.</p>
+
+            <div class="callout callout-warning">
+                <div class="callout-title">This Isn't Ancient History</div>
+                <p>This happened to <em>you</em>. If you had $10,000 in a savings account in January 2020, its purchasing power dropped to roughly $8,100 by 2024 — even if the number in your account didn't change. You didn't spend it. You didn't lose it. It was taken from you through <span class="glossary-term" data-term="inflation">inflation</span>. Every new dollar printed diluted every dollar you'd already earned.</p>
+            </div>
+
+            <div class="callout callout-key">
+                <div class="callout-title">The Core Problem</div>
+                <p>The US dollar has no cap on supply. There is no rule, no law, and no mechanism that prevents the government from creating more whenever it decides to. The decision to devalue your savings is made by a small group of people you didn't elect, in meetings you weren't invited to, and there is nothing you can do to stop it — <strong>unless you hold a form of money they can't print.</strong></p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Wave: dark → cool -->
+    <div class="wave-divider" style="background:#0F0F23">
+        <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path fill="#EEF1F8" d="M0,20C360,55,720,5,1080,35C1280,50,1400,40,1440,30L1440,60L0,60Z"/>
+        </svg>
+    </div>
+
+    <!-- ===== SECTION 6: The Best Money Ever Created ===== -->
+    <section class="section-band bg-cool">
+        <div class="content">
+            <div class="section-intro">
+                <span class="section-number">06</span>
+                <h2>The Best Money Ever Created</h2>
+            </div>
+
+            <p>So here's the situation: gold has great properties as money — it's scarce, durable, divisible, and no one can print more of it. But it's heavy, hard to transport, hard to verify, and nearly impossible to use for everyday purchases. That's why we switched to paper money in the first place.</p>
+
+            <p>And <span class="glossary-term" data-term="fiat-currency">fiat currency</span> (like the dollar) is easy to transact with — you can send it electronically, pay bills online, carry it in your pocket. But it inflates endlessly, can be frozen or seized, and you don't actually control it — your bank does.</p>
+
+            <p>What if there was a form of money that combined the best properties of <em>both</em> — without the drawbacks of either?</p>
+
+            <p><strong>That's <span class="glossary-term" data-term="bitcoin">Bitcoin</span>.</strong></p>
+
+            <h3>Gold's Strengths — Without Gold's Weaknesses</h3>
+
+            <div class="comparison-grid">
+                <div class="comparison-card good animate-in">
+                    <h4><span class="icon-circle icon-gold">🥇</span> What Gold Gets Right</h4>
+                    <ul>
+                        <li><span class="glossary-term" data-term="scarcity">Scarce</span> — can't be manufactured</li>
+                        <li>Divisible — can be split into smaller units</li>
+                        <li><span class="glossary-term" data-term="final-settlement">Final settlement</span> — once transferred, it's done</li>
+                        <li>No counterparty risk — you hold it, you own it</li>
+                    </ul>
+                </div>
+                <div class="comparison-card animate-in">
+                    <h4><span class="icon-circle icon-red">🥇</span> What Gold Gets Wrong</h4>
+                    <ul>
+                        <li class="con">Heavy and hard to transport</li>
+                        <li class="con">Difficult to verify without expertise</li>
+                        <li class="con">Hard to divide for small purchases</li>
+                        <li class="con">Requires physical security (vaults, guards)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p>Bitcoin inherits all of gold's monetary strengths — it's capped at 21 million coins forever, it's divisible down to 100 millionths (called <span class="glossary-term" data-term="satoshis">satoshis</span>), and when you send it, settlement is final. But because it's digital, you can send it across the world in minutes, verify it instantly, and secure it with a password instead of a vault.</p>
+
+            <h3>Fiat's Strengths — Without Fiat's Weaknesses</h3>
+
+            <div class="comparison-grid">
+                <div class="comparison-card good animate-in">
+                    <h4><span class="icon-circle icon-green">💵</span> What Fiat Gets Right</h4>
+                    <ul>
+                        <li>Easy to move and transact</li>
+                        <li>Widely accepted</li>
+                        <li>Divisible into small amounts (cents)</li>
+                        <li>Digital transfers are fast</li>
+                    </ul>
+                </div>
+                <div class="comparison-card animate-in">
+                    <h4><span class="icon-circle icon-red">💵</span> What Fiat Gets Wrong</h4>
+                    <ul>
+                        <li class="con">No supply cap — inflates endlessly</li>
+                        <li class="con">Can be frozen, seized, or censored</li>
+                        <li class="con">You don't control it — banks and governments do</li>
+                        <li class="con">No <span class="glossary-term" data-term="final-settlement">final settlement</span> — transactions can be reversed</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p>Bitcoin takes everything convenient about digital money — instant transfers, easy subdivision, global reach — but removes the fatal flaw. No one can print more of it. No bank can freeze your account. No government can inflate it away. <strong>You</strong> hold it. <strong>You</strong> control it.</p>
+
+            <h3>The Full Picture</h3>
+
+            <div class="triple-grid">
+                <div class="comparison-card animate-in" style="border-top-color: #D4A017;">
+                    <h4><span class="icon-circle icon-gold">🥇</span> Gold</h4>
+                    <ul>
+                        <li>Scarce ✓</li>
+                        <li>Durable ✓</li>
+                        <li>Final settlement ✓</li>
+                        <li class="con">Hard to move</li>
+                        <li class="con">Hard to verify</li>
+                        <li class="con">Hard to divide</li>
+                    </ul>
+                </div>
+                <div class="comparison-card animate-in" style="border-top-color: var(--btc-danger);">
+                    <h4><span class="icon-circle icon-red">💵</span> Fiat (Dollar)</h4>
+                    <ul>
+                        <li>Easy to transact ✓</li>
+                        <li>Widely accepted ✓</li>
+                        <li>Divisible ✓</li>
+                        <li class="con">Infinite supply</li>
+                        <li class="con">Can be seized</li>
+                        <li class="con">No final settlement</li>
+                    </ul>
+                </div>
+                <div class="comparison-card btc animate-in" style="border-top-color: var(--btc-orange);">
+                    <h4><span class="icon-circle icon-orange">₿</span> Bitcoin</h4>
+                    <ul>
+                        <li>Scarce (21M cap) ✓</li>
+                        <li>Easy to transact ✓</li>
+                        <li>Final settlement ✓</li>
+                        <li>Easy to verify ✓</li>
+                        <li>You control it ✓</li>
+                        <li>Can't be inflated ✓</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="callout callout-key">
+                <div class="callout-title">The Bottom Line</div>
+                <p><strong>Bitcoin is the best of gold and fiat, without the drawbacks of either.</strong> It has gold's scarcity and finality. It has fiat's convenience and speed. But unlike gold, you can send it in seconds. And unlike the dollar, no one can print more. In the coming lessons, we'll learn <em>how</em> Bitcoin achieves each of these properties — and why they can't be faked or taken away.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Wave: cool → white (FAQ) -->
+    <div class="wave-divider" style="background:#EEF1F8">
+        <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path fill="#FFFFFF" d="M0,35C200,15,400,50,600,20C800,45,1000,10,1200,40C1350,50,1440,30,1440,30L1440,60L0,60Z"/>
+        </svg>
+    </div>
+
+    <!-- ===== COMMON QUESTIONS ===== -->
+    <section class="section-band bg-white">
+        <div class="content">
+            <h2>Common Questions</h2>
+
+            <div class="callout callout-info">
+                <div class="callout-title">Q: Isn't some inflation normal and healthy?</div>
+                <p>A: Central banks <em>target</em> 2% inflation, calling it a sign of a "healthy economy." But 2% per year means your money loses half its value every 36 years. That's not healthy for savers — it's a policy choice that punishes people who try to save and rewards those who borrow. In a world with advancing technology, prices should naturally <em>fall</em> over time, not rise.</p>
+            </div>
+
+            <div class="callout callout-info">
+                <div class="callout-title">Q: Don't wages go up to match inflation?</div>
+                <p>A: Sometimes — but never evenly, and rarely fast enough. Since 1970, housing has risen ~1,730% while median income has risen ~717%. Wages tend to lag behind cost-of-living increases, especially for people on fixed incomes, retirees, and lower-wage workers. Inflation hits the people who can least afford it the hardest.</p>
+            </div>
+
+            <div class="callout callout-info">
+                <div class="callout-title">Q: If the government just stopped printing money, would prices go down?</div>
+                <p>A: The dollars already in circulation don't disappear. But if the money supply remained fixed while productivity improved, prices would gradually fall — you'd be able to buy more with each dollar over time. This is called <span class="glossary-term" data-term="deflation">deflation</span>, and it's what naturally happens in a sound monetary system. Your money would actually <em>gain</em> value for being saved.</p>
+            </div>
+
+            <div class="callout callout-info">
+                <div class="callout-title">Q: Why should I care about this? I'm not an economist.</div>
+                <p>A: You don't need to be. You already feel it — at the gas pump, at the grocery store, when you look at home prices. Understanding <em>why</em> it's happening is the first step to protecting yourself from it. That's what the rest of this course is about.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- KEY TAKEAWAYS -->
+    <section class="section-band" style="background:transparent;">
+        <div class="content">
+            <div class="takeaways">
+                <h2>Key Takeaways</h2>
+                <ul>
+                    <li><strong>Prices aren't going up — the dollar is going down.</strong> When the <span class="glossary-term" data-term="money-supply">money supply</span> expands faster than the economy produces goods, each dollar buys less. That's <span class="glossary-term" data-term="inflation">inflation</span>.</li>
+                    <li><strong>Money is a tool that solves the barter problem.</strong> Good money must serve as a <span class="glossary-term" data-term="medium-of-exchange">medium of exchange</span>, <span class="glossary-term" data-term="store-of-value">store of value</span>, and <span class="glossary-term" data-term="unit-of-account">unit of account</span>. Money always trends toward one — historically gold, currently the dollar.</li>
+                    <li><strong>Long-term price increases across all goods aren't supply and demand — they're monetary inflation.</strong> Short-term fluctuations are market forces. Decades-long trends across every category point to one cause: more dollars being printed.</li>
+                    <li><strong>The money supply grew by ~40% in just a few years.</strong> Over $6 trillion in new dollars were created starting in 2020, pushing M2 from $15.4 trillion to over $21 trillion — and it hasn't come back down. The consequences hit immediately: 9.1% inflation, surging costs, and eroded savings.</li>
+                    <li><strong>Innovation should make life cheaper.</strong> In many sectors, technology <em>is</em> driving prices down. But inflation steals those gains in the things you need most: housing, food, healthcare, and education.</li>
+                    <li><strong><span class="glossary-term" data-term="bitcoin">Bitcoin</span> combines the best properties of gold and fiat currency without the weaknesses of either.</strong> Scarce like gold. Convenient like the dollar. Controlled by no one but you.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FURTHER READING -->
+    <section class="section-band bg-white">
+        <div class="content">
+            <h2>Further Reading</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Resource</th>
+                        <th>Author/Source</th>
+                        <th>Type</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="https://wtfhappenedin1971.com/" target="_blank">WTF Happened in 1971?</a></td>
+                        <td>Various / Community</td>
+                        <td>Data Visualization</td>
+                        <td>10 min browse</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.youtube.com/watch?v=DyV0OfU3-FU" target="_blank">How The Economic Machine Works</a></td>
+                        <td>Ray Dalio</td>
+                        <td>Video</td>
+                        <td>31 min</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://saifedean.com/thebitcoinstandard/" target="_blank">The Bitcoin Standard (Chapters 1-3)</a></td>
+                        <td>Saifedean Ammous</td>
+                        <td>Book</td>
+                        <td>2-3 hrs</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://nakamotoinstitute.org/shelling-out/" target="_blank">Shelling Out: The Origins of Money</a></td>
+                        <td>Nick Szabo</td>
+                        <td>Essay</td>
+                        <td>30 min read</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://fred.stlouisfed.org/series/M2SL" target="_blank">M2 Money Supply Data</a></td>
+                        <td>Federal Reserve (FRED)</td>
+                        <td>Data</td>
+                        <td>5 min browse</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <nav class="nav-links">
+        <span style="color: #CCC;">This is Lesson 1</span>
+        <a href="../lesson-1-2-what-is-bitcoin/lesson.html">Next: What Is Bitcoin? &rarr;</a>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="lesson-footer">
+        <em>Bitcoin Education — Built by Justin</em>
+    </footer>
+
+    <!-- GLOSSARY (placed after footer) -->
+    <div class="content">
+        <div class="glossary-section" id="glossary">
+            <h2>Glossary</h2>
+            <p style="font-size: 0.9rem; color: var(--btc-gray); margin-bottom: 1.5rem;"><em>Terms are clickable in the HTML version of this lesson. This section is a full reference.</em></p>
+            <dl class="glossary-list">
+                <div class="glossary-entry">
+                    <dt>Bitcoin</dt>
+                    <dd>A decentralized digital currency with a fixed supply of 21 million coins. It combines the scarcity of gold with the convenience of digital money, and no central authority controls it.</dd>
+                </div>
+                <div class="glossary-entry">
+                    <dt>Deflation</dt>
+                    <dd>A decrease in the general price level — meaning your money buys more over time. This happens naturally when productivity increases faster than the money supply.</dd>
+                </div>
+                <div class="glossary-entry">
+                    <dt>Double Coincidence of Wants</dt>
+                    <dd>The problem in barter where both parties must want exactly what the other has at the same time and place. Money solves this by acting as a universal intermediary.</dd>
+                </div>
+                <div class="glossary-entry">
+                    <dt>Fiat Currency</dt>
+                    <dd>Government-issued money that isn't backed by a physical commodity like gold. Its value comes from government decree and public trust. The US dollar, euro, and yen are all fiat currencies.</dd>
+                </div>
+                <div class="glossary-entry">
+                    <dt>Federal Reserve</dt>
+                    <dd>The central bank of the United States, created in 1913. It controls the money supply and sets interest rates. Its ability to create new dollars is the mechanism through which inflation occurs.</dd>
+                </div>
+                <div class="glossary-entry">
+                    <dt>Final Settlement</dt>
+                    <dd>A payment that is fully and irreversibly complete. Once settled, neither party can reverse or undo it. Gold and Bitcoin offer final settlement; bank transfers and credit cards do not.</dd>
+                </div>
+                <div class="glossary-entry">
+                    <dt>Gold</dt>
+                    <dd>A precious metal that served as the world's primary money for thousands of years due to its scarcity, durability, and difficulty to counterfeit. The US dollar was backed by gold until 1971.</dd>
+                </div>
+                <div class="glossary-entry">
+                    <dt>Inflation</dt>
+                    <dd>The expansion of the money supply, which results in each unit of currency buying less over time. Commonly described as "rising prices," but more accurately understood as the currency losing purchasing power.</dd>
+                </div>
+                <div class="glossary-entry">
+                    <dt>M2 Money Supply</dt>
+                    <dd>A measure of the total amount of money in circulation, including cash, checking deposits, savings accounts, and money market accounts. Used as a key indicator of how much money exists in the economy.</dd>
+                </div>
+                <div class="glossary-entry">
+                    <dt>Medium of Exchange</dt>
+                    <dd>One of the three functions of money. Something widely accepted in trade so people don't have to barter directly. The dollar serves this role today; Bitcoin is increasingly doing so.</dd>
+                </div>
+                <div class="glossary-entry">
+                    <dt>Money</dt>
+                    <dd>A tool that solves the barter problem by serving as a medium of exchange, store of value, and unit of account. Good money is scarce, durable, divisible, portable, and widely accepted.</dd>
+                </div>
+                <div class="glossary-entry">
+                    <dt>Money Supply</dt>
+                    <dd>The total amount of money in circulation in an economy. When the money supply grows faster than the production of goods and services, inflation results.</dd>
+                </div>
+                <div class="glossary-entry">
+                    <dt>Purchasing Power</dt>
+                    <dd>The amount of goods or services a unit of currency can buy. When inflation occurs, purchasing power decreases — each dollar buys less than it used to.</dd>
+                </div>
+                <div class="glossary-entry">
+                    <dt>Satoshis</dt>
+                    <dd>The smallest unit of Bitcoin, equal to 0.00000001 BTC (one hundred-millionth of a bitcoin). Named after Bitcoin's pseudonymous creator, Satoshi Nakamoto.</dd>
+                </div>
+                <div class="glossary-entry">
+                    <dt>Scarcity</dt>
+                    <dd>A limited supply that cannot be easily increased. Gold is scarce because it's difficult to mine. Bitcoin is scarce because its supply is mathematically capped at 21 million coins.</dd>
+                </div>
+                <div class="glossary-entry">
+                    <dt>Store of Value</dt>
+                    <dd>One of the three functions of money. Something that maintains its purchasing power over time. Gold is a strong store of value; fiat currencies are weak stores of value due to inflation.</dd>
+                </div>
+                <div class="glossary-entry">
+                    <dt>Unit of Account</dt>
+                    <dd>One of the three functions of money. A standard measurement for pricing goods and services. The dollar is the dominant unit of account in the US.</dd>
+                </div>
+            </dl>
+        </div>
+    </div>
+
+    <!-- ===== GLOSSARY TOOLTIP ENGINE ===== -->
+    <script>
+        (function() {
+            const definitions = {
+                "bitcoin": "A decentralized digital currency with a fixed supply of 21 million coins. It combines the scarcity of gold with the convenience of digital money, and no central authority controls it.",
+                "deflation": "A decrease in the general price level — meaning your money buys more over time. This happens naturally when productivity increases faster than the money supply.",
+                "double-coincidence-of-wants": "The problem in barter where both parties must want exactly what the other has at the same time and place. Money solves this by acting as a universal intermediary.",
+                "fiat-currency": "Government-issued money that isn't backed by a physical commodity like gold. Its value comes from government decree and public trust.",
+                "federal-reserve": "The central bank of the United States, created in 1913. It controls the money supply and sets interest rates. Its ability to create new dollars is the mechanism through which inflation occurs.",
+                "final-settlement": "A payment that is fully and irreversibly complete. Once settled, neither party can reverse or undo it. Gold and Bitcoin offer final settlement; bank transfers do not.",
+                "gold": "A precious metal that served as the world's primary money for thousands of years due to its scarcity, durability, and difficulty to counterfeit.",
+                "inflation": "The expansion of the money supply, which results in each unit of currency buying less over time. Commonly described as 'rising prices,' but more accurately understood as the currency losing purchasing power.",
+                "m2": "A measure of the total amount of money in circulation, including cash, checking deposits, savings accounts, and money market accounts.",
+                "medium-of-exchange": "One of the three functions of money. Something widely accepted in trade so people don't have to barter directly.",
+                "money": "A tool that solves the barter problem by serving as a medium of exchange, store of value, and unit of account.",
+                "money-supply": "The total amount of money in circulation in an economy. When it grows faster than production of goods and services, inflation results.",
+                "purchasing-power": "The amount of goods or services a unit of currency can buy. When inflation occurs, purchasing power decreases.",
+                "satoshis": "The smallest unit of Bitcoin, equal to 0.00000001 BTC (one hundred-millionth of a bitcoin). Named after Bitcoin's pseudonymous creator.",
+                "scarcity": "A limited supply that cannot be easily increased. Bitcoin is scarce because its supply is mathematically capped at 21 million coins.",
+                "store-of-value": "One of the three functions of money. Something that maintains its purchasing power over time. Gold is strong; fiat currencies are weak due to inflation.",
+                "unit-of-account": "One of the three functions of money. A standard measurement for pricing goods and services.",
+            };
+
+            const termNames = {
+                "bitcoin": "Bitcoin",
+                "deflation": "Deflation",
+                "double-coincidence-of-wants": "Double Coincidence of Wants",
+                "fiat-currency": "Fiat Currency",
+                "federal-reserve": "Federal Reserve",
+                "final-settlement": "Final Settlement",
+                "gold": "Gold",
+                "inflation": "Inflation",
+                "m2": "M2 Money Supply",
+                "medium-of-exchange": "Medium of Exchange",
+                "money": "Money",
+                "money-supply": "Money Supply",
+                "purchasing-power": "Purchasing Power",
+                "satoshis": "Satoshis",
+                "scarcity": "Scarcity",
+                "store-of-value": "Store of Value",
+                "unit-of-account": "Unit of Account",
+            };
+
+            let activeTerms = new Set();
+
+            function closeBubble(bubble) {
+                bubble.classList.remove('active');
+            }
+
+            function openBubble(term, bubble) {
+                document.querySelectorAll('.glossary-bubble.active').forEach(b => {
+                    if (b !== bubble) closeBubble(b);
+                });
+
+                activeTerms.add(term);
+                bubble.classList.add('active');
+
+                const rect = term.getBoundingClientRect();
+                const bubbleHeight = bubble.offsetHeight;
+                if (rect.top < bubbleHeight + 20) {
+                    bubble.classList.add('flip-below');
+                } else {
+                    bubble.classList.remove('flip-below');
+                }
+
+                // Horizontal overflow check
+                setTimeout(() => {
+                    const bubbleRect = bubble.getBoundingClientRect();
+                    if (bubbleRect.left < 10) {
+                        bubble.style.left = '0';
+                        bubble.style.transform = 'translateX(0)';
+                    } else if (bubbleRect.right > window.innerWidth - 10) {
+                        bubble.style.left = 'auto';
+                        bubble.style.right = '0';
+                        bubble.style.transform = 'translateX(0)';
+                    }
+                }, 10);
+            }
+
+            document.querySelectorAll('.glossary-term').forEach(term => {
+                const key = term.getAttribute('data-term');
+                if (!definitions[key]) return;
+
+                const bubble = document.createElement('div');
+                bubble.className = 'glossary-bubble';
+                bubble.innerHTML = `<span class="bubble-term">${termNames[key] || key}</span>${definitions[key]}`;
+                term.appendChild(bubble);
+
+                term.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    openBubble(term, bubble);
+                });
+            });
+
+            document.addEventListener('click', () => {
+                document.querySelectorAll('.glossary-bubble.active').forEach(closeBubble);
+                activeTerms.clear();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.glossary-bubble.active').forEach(closeBubble);
+                    activeTerms.clear();
+                }
+            });
+        })();
+    </script>
+
+    <!-- ===== SCROLL ANIMATION ENGINE ===== -->
+    <script>
+        (function() {
+            const animationSelectors = [
+                '.comparison-card',
+                '.stat-card',
+                '.timeline-item',
+                '.callout',
+                '.diagram',
+                '.genesis-quote'
+            ];
+
+            animationSelectors.forEach(selector => {
+                document.querySelectorAll(selector).forEach(el => {
+                    el.classList.add('animate-in');
+                });
+            });
+
+            const revealElements = document.querySelectorAll('.animate-in');
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            revealElements.forEach(el => observer.observe(el));
+
+            if (!('IntersectionObserver' in window)) {
+                revealElements.forEach(el => el.classList.add('visible'));
+            }
+
+            // Animated counter for stat numbers
+            function animateCounter(element, target) {
+                if (element.dataset.counted) return;
+                element.dataset.counted = true;
+
+                const suffix = element.getAttribute('data-suffix') || '';
+                const decimals = parseInt(element.getAttribute('data-decimals')) || 0;
+                let current = 0;
+                const duration = 1500;
+                const steps = 60;
+                const increment = target / steps;
+                const stepDuration = duration / steps;
+
+                function easeOutCubic(t) {
+                    return 1 - Math.pow(1 - t, 3);
+                }
+
+                let step = 0;
+                function update() {
+                    step++;
+                    const progress = easeOutCubic(step / steps);
+                    current = target * progress;
+
+                    if (step >= steps) {
+                        current = target;
+                    }
+
+                    if (decimals > 0) {
+                        element.textContent = current.toFixed(decimals).toLocaleString() + suffix;
+                    } else {
+                        element.textContent = Math.floor(current).toLocaleString() + suffix;
+                    }
+                    element.classList.add('counting');
+
+                    if (step < steps) {
+                        setTimeout(update, stepDuration);
+                    }
+                }
+
+                update();
+            }
+
+            document.querySelectorAll('.stat-number[data-count-to]').forEach(stat => {
+                const counterObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const target = parseFloat(entry.target.getAttribute('data-count-to'));
+                            animateCounter(entry.target, target);
+                            counterObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                counterObserver.observe(stat);
+            });
+        })();
+    </script>
+
+
+
+    </div><!-- /lesson-content-wrapper -->
+
+    <!-- ACCESS GATE LOGIC -->
+    <script>
+    // Simple hash function for access code verification
+    // This is NOT military-grade security — it prevents casual access.
+    // Someone technical could view-source around it, but for a course
+    // at a normal price point, this is standard and appropriate.
+    function simpleHash(str) {
+        var hash = 0;
+        for (var i = 0; i < str.length; i++) {
+            var chr = str.charCodeAt(i);
+            hash = ((hash << 5) - hash) + chr;
+            hash |= 0; // Convert to 32bit integer
+        }
+        return hash;
+    }
+
+    // ---------------------------------------------------
+    // SET YOUR ACCESS CODE HERE
+    // Change this hash to match your chosen access code.
+    // To generate a new hash: open browser console and run:
+    //   simpleHash("your-new-code")
+    // Then paste that number below.
+    // ---------------------------------------------------
+    var VALID_HASH = 194994899; // Default code: "btc2026"
+
+    function checkAccess() {
+        var code = document.getElementById('gateCode').value.trim();
+        if (!code) {
+            document.getElementById('gateError').textContent = 'Please enter an access code.';
+            return;
+        }
+        if (simpleHash(code) === VALID_HASH) {
+            // Unlock — store in sessionStorage so it persists during this browser session
+            sessionStorage.setItem('btc_edu_access', 'granted');
+            document.getElementById('accessGate').classList.add('unlocked');
+            document.getElementById('lessonContent').classList.add('visible');
+        } else {
+            document.getElementById('gateError').textContent = 'Invalid access code. Please try again.';
+            document.getElementById('gateCode').value = '';
+            document.getElementById('gateCode').focus();
+        }
+    }
+
+    // Allow Enter key to submit
+    document.getElementById('gateCode').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') checkAccess();
+    });
+
+    // Check if already unlocked this session
+    if (sessionStorage.getItem('btc_edu_access') === 'granted') {
+        document.getElementById('accessGate').classList.add('unlocked');
+        document.getElementById('lessonContent').classList.add('visible');
+    }
+    </script>
+
+    <!-- PWA: Register Service Worker -->
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('./sw.js').then(function(reg) {
+                console.log('Service Worker registered — scope:', reg.scope);
+            }).catch(function(err) {
+                console.log('Service Worker registration failed:', err);
+            });
+        });
+    }
+    </script>
+
+</body>
+</html>
