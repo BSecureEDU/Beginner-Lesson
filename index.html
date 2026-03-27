@@ -3,12 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#F7931A">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="BTC Education">
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="icon-192.png">
     <title>What is Money? — Bitcoin Education</title>
     <style>
         /* ===== BASE STYLES ===== */
@@ -1229,122 +1223,9 @@
                 font-size: 0.82rem;
             }
         }
-    
-
-        /* ===== ACCESS GATE ===== */
-        .access-gate {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            z-index: 10000;
-            background: linear-gradient(135deg, #0F0F23 0%, #1A1A2E 40%, #16213E 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-        .access-gate.unlocked {
-            display: none;
-        }
-        .gate-card {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(247,147,26,0.2);
-            border-radius: 20px;
-            padding: 3rem 2.5rem;
-            max-width: 420px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-        }
-        .gate-logo {
-            font-size: 5rem;
-            color: #F7931A;
-            font-family: Georgia, serif;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 0 40px rgba(247,147,26,0.3);
-        }
-        .gate-title {
-            color: #FFFFFF;
-            font-family: Georgia, serif;
-            font-size: 1.6rem;
-            margin-bottom: 0.5rem;
-        }
-        .gate-subtitle {
-            color: rgba(255,255,255,0.5);
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
-        }
-        .gate-input {
-            width: 100%;
-            padding: 0.9rem 1.2rem;
-            border: 2px solid rgba(247,147,26,0.3);
-            border-radius: 10px;
-            background: rgba(255,255,255,0.06);
-            color: #FFFFFF;
-            font-size: 1.1rem;
-            text-align: center;
-            letter-spacing: 0.15em;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-        .gate-input::placeholder {
-            color: rgba(255,255,255,0.3);
-            letter-spacing: 0.05em;
-        }
-        .gate-input:focus {
-            border-color: #F7931A;
-            box-shadow: 0 0 20px rgba(247,147,26,0.15);
-        }
-        .gate-btn {
-            width: 100%;
-            padding: 0.9rem;
-            margin-top: 1rem;
-            border: none;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #F7931A 0%, #E8B84B 100%);
-            color: #1A1A2E;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            letter-spacing: 0.03em;
-            transition: transform 0.15s, box-shadow 0.15s;
-        }
-        .gate-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(247,147,26,0.35);
-        }
-        .gate-error {
-            color: #E74C3C;
-            font-size: 0.9rem;
-            margin-top: 0.75rem;
-            min-height: 1.3em;
-        }
-        .lesson-content-wrapper {
-            display: none;
-        }
-        .lesson-content-wrapper.visible {
-            display: block;
-        }
     </style>
 </head>
 <body>
-
-    <!-- ===== ACCESS GATE ===== -->
-    <div class="access-gate" id="accessGate">
-        <div class="gate-card">
-            <div class="gate-logo">&#x20BF;</div>
-            <div class="gate-title">Bitcoin Education</div>
-            <div class="gate-subtitle">Enter your access code to begin</div>
-            <input type="text" class="gate-input" id="gateCode" placeholder="Access Code" autocomplete="off" autofocus>
-            <button class="gate-btn" id="gateBtn" onclick="checkAccess()">Unlock Course</button>
-            <div class="gate-error" id="gateError"></div>
-        </div>
-    </div>
-
-    <!-- ===== LESSON CONTENT (hidden until unlocked) ===== -->
-    <div class="lesson-content-wrapper" id="lessonContent">
-
-
 
     <!-- ===== HEADER ===== -->
     <header class="lesson-header">
@@ -1360,11 +1241,10 @@
                 <div class="callout-title">A Word From the Author</div>
                 <p>In 2020, my wife and I were expecting our first child. We owned a home. We were making more money combined than ever before. But for some reason, we just couldn't get ahead.</p>
                 <p>We'd been in our house since 2018 and hadn't built any real savings — nothing to prepare for a baby and everything that comes with one. I couldn't wrap my mind around why we were "just getting by."</p>
-                <p>So I checked the spending. We weren't going on trips. We ate out only a few nights a month — I actually like to cook at home. Amazon packages showed up from time to time, but nothing outrageous. I assumed it had to be indiscriminate spending. Nope. Checked the grocery bill — <em>ouch.</em> Checked the electric bill — did we leave the doors open and cool the neighbor's house too? Checked how much gas we were burning through — remember those scan-your-receipt apps?</p>
-                <p>It wasn't a lavish lifestyle draining our bank accounts. <strong>It was just living.</strong></p>
-                <p>That realization started me down a path: why is life just so costly? That trail led me to a question I had never thought to ask before — <em>"What is money?"</em></p>
-                <p>The answer to that question led me to Bitcoin. I'd actually heard of it back in 2013 from the Silk Road (I wasn't a customer), and even bought $25 worth in 2015 at $250 per coin. I even mined some because it seemed interesting. But I never stopped to ask <em>"What is Bitcoin?"</em></p>
-                <p>Flash forward to 2020 and I had come full circle. Maybe your path here looks completely different. Doesn't matter — the question is the same: <strong>What is money?</strong> Let's find out.</p>
+                <p>So I checked the spending. We weren't going on trips. We ate out only a few nights a month — I actually like to cook at home. Amazon packages showed up from time to time, but nothing outrageous. I assumed it had to be indiscriminate spending. Nope. Checked the grocery bill — <em>ouch.</em> Checked the electric bill. Checked how much gas we were burning through.</p>
+                <p>It wasn't a lavish lifestyle draining our bank accounts. <strong>It was just living.</strong> And every year, living cost more. Not because we'd changed our habits — because the money itself was changing. Becoming worth less.</p>
+                <p>That realization started me down a path: why is life just so costly? And that trail led me to the question I had never thought to ask before — <em>"What is money?"</em></p>
+                <p>The answer to that question led me to Bitcoin. But first, I needed to understand why the ruler we were using to measure the cost of living kept shrinking. Let's find out.</p>
             </div>
         </div>
     </section>
@@ -1385,7 +1265,7 @@
 
             <div class="callout callout-warning" style="margin-top: 0;">
                 <div class="callout-title">Think About This</div>
-                <p>Your parents bought a house on a single income. You need two incomes just to rent an apartment. Your grandparents raised a family of five on a factory worker's salary. You have a college degree and still live paycheck to paycheck. Gas was $1.00/gallon when your dad learned to drive. Now it's over $3.00. A dozen eggs used to cost less than a dollar — in early 2023, it hit $4.82.</p>
+                <p>Your parents bought a house on a single income. You need two incomes just to rent an apartment. Your grandparents raised a family of five on a factory worker's salary. You have a college degree and still live paycheck to paycheck. Gas was less than $1.00/gallon when your dad learned to drive. Now it's over $3.00. A dozen eggs cost less than a dollar in 2000 — in early 2023, it hit $4.82.</p>
                 <p>You're told the economy is growing. So why does it feel like you're falling behind?</p>
             </div>
 
@@ -1404,358 +1284,250 @@
                             <stop offset="0%" stop-color="#F7931A"/>
                             <stop offset="100%" stop-color="#E74C3C"/>
                         </linearGradient>
-                        <linearGradient id="arrowGrad" x1="0" y1="0" x2="1" y2="0">
-                            <stop offset="0%" stop-color="#F7931A"/>
-                            <stop offset="100%" stop-color="#E74C3C"/>
-                        </linearGradient>
                     </defs>
                     <!-- Label -->
-                    <text x="350" y="24" fill="rgba(255,255,255,0.45)" font-size="11" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif" letter-spacing="0.1em">WHAT YOUR DOLLAR BUYS OVER TIME</text>
+                    <text x="350" y="24" fill="rgba(255,255,255,0.45)" font-size="11" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif" letter-spacing="0.1em">PURCHASING POWER EROSION: 1913 → 2024</text>
                     <!-- Dollar signs shrinking left to right -->
                     <text x="80" y="105" fill="#F7931A" font-size="72" font-weight="700" text-anchor="middle" font-family="Georgia, serif" opacity="1">$</text>
                     <text x="80" y="130" fill="rgba(255,255,255,0.5)" font-size="12" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">1913</text>
 
                     <text x="210" y="105" fill="#E8B84B" font-size="56" font-weight="700" text-anchor="middle" font-family="Georgia, serif" opacity="0.85">$</text>
-                    <text x="210" y="130" fill="rgba(255,255,255,0.4)" font-size="12" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">1950</text>
+                    <text x="210" y="130" fill="rgba(255,255,255,0.5)" font-size="12" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">1950</text>
 
-                    <text x="340" y="105" fill="#E8B84B" font-size="40" font-weight="700" text-anchor="middle" font-family="Georgia, serif" opacity="0.65">$</text>
-                    <text x="340" y="130" fill="rgba(255,255,255,0.35)" font-size="12" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">1980</text>
+                    <text x="340" y="105" fill="#D4854A" font-size="40" font-weight="700" text-anchor="middle" font-family="Georgia, serif" opacity="0.7">$</text>
+                    <text x="340" y="130" fill="rgba(255,255,255,0.5)" font-size="12" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">1985</text>
 
-                    <text x="460" y="105" fill="#D4A043" font-size="26" font-weight="700" text-anchor="middle" font-family="Georgia, serif" opacity="0.5">$</text>
-                    <text x="460" y="130" fill="rgba(255,255,255,0.3)" font-size="12" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">2000</text>
+                    <text x="470" y="105" fill="#C26830" font-size="24" font-weight="700" text-anchor="middle" font-family="Georgia, serif" opacity="0.6">$</text>
+                    <text x="470" y="130" fill="rgba(255,255,255,0.5)" font-size="12" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">2010</text>
 
-                    <text x="565" y="105" fill="#E74C3C" font-size="14" font-weight="700" text-anchor="middle" font-family="Georgia, serif" opacity="0.4">$</text>
-                    <text x="565" y="130" fill="rgba(255,255,255,0.3)" font-size="12" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">2024</text>
+                    <text x="600" y="105" fill="#B35821" font-size="12" font-weight="700" text-anchor="middle" font-family="Georgia, serif" opacity="0.5">$</text>
+                    <text x="600" y="130" fill="rgba(255,255,255,0.5)" font-size="12" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">2024</text>
 
-                    <!-- Downward trend arrow -->
-                    <line x1="100" y1="52" x2="590" y2="92" stroke="url(#arrowGrad)" stroke-width="2.5" stroke-dasharray="6,4" opacity="0.6"/>
-                    <polygon points="590,85 600,92 590,99" fill="#E74C3C" opacity="0.6"/>
-
-                    <!-- Caption -->
-                    <text x="640" y="95" fill="#E74C3C" font-size="11" font-weight="700" text-anchor="middle" font-family="Segoe UI, sans-serif" opacity="0.8">−97%</text>
+                    <!-- Arrow label -->
+                    <text x="650" y="60" fill="#E74C3C" font-size="14" font-weight="700" text-anchor="middle" font-family="Segoe UI, sans-serif">-97%</text>
                 </svg>
             </div>
 
-            <p>Every year, each dollar you hold buys a little bit less. The coffee. The gas. The rent. It all costs "more" — but only because the dollars you're paying with are worth <em>less</em> than they used to be. This isn't bad luck, and it isn't greed. It's the predictable result of a system that creates new money faster than the economy creates new goods.</p>
-
-            <p>More dollars chasing not that much more stuff. That's the formula. And it's been running for decades.</p>
-
             <div class="callout callout-key">
-                <div class="callout-title">Key Insight</div>
-                <p>When someone says "prices are rising," flip it in your mind: <strong>the dollar is losing <span class="glossary-term" data-term="purchasing-power">purchasing power</span>.</strong> It's not that things are getting more expensive — it's that your money is getting weaker.</p>
+                <div class="callout-title">The Core Insight</div>
+                <p><strong>When everything costs more, the problem isn't the goods — it's the unit of measurement.</strong> Imagine your ruler shrinks by 1% every year for 111 years. Every table you measure looks taller, even though nothing has actually changed. That's what's happened to the dollar.</p>
             </div>
-
         </div>
     </section>
 
-    <!-- Wave: white → warm -->
     <div class="wave-divider" style="background:#FFFFFF">
         <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
             <path fill="#FDF8F0" d="M0,20C360,55,720,5,1080,35C1280,50,1400,40,1440,30L1440,60L0,60Z"/>
         </svg>
     </div>
 
-    <!-- ===== SECTION 2: Money — The Tool That Changed Everything ===== -->
+    <!-- ===== SECTION 2: The Gold Lens — The Centerpiece ===== -->
     <section class="section-band bg-warm">
         <div class="content">
             <div class="section-intro">
                 <span class="section-number">02</span>
-                <h2>Money: The Tool That Changed Everything</h2>
+                <h2>The Gold Lens: A Better Ruler</h2>
             </div>
 
-            <p>Before money, humans had to barter — trade goods directly with each other. If you raised chickens and needed shoes, you had to find a shoemaker who wanted chickens, at the exact time you both had something to trade. Economists call this the <span class="glossary-term" data-term="double-coincidence-of-wants">double coincidence of wants</span>, and it's a terrible way to build an economy.</p>
-
-            <div class="diagram">
-                <div class="diagram-title">The Barter Problem</div>
-                <div class="flow-diagram">
-                    <div class="flow-step">🐔 You Have Chickens</div>
-                    <div class="flow-arrow">↔</div>
-                    <div class="flow-step problem">Need: Shoemaker Who Wants Chickens</div>
-                    <div class="flow-arrow">↔</div>
-                    <div class="flow-step">👞 You Need Shoes</div>
-                </div>
-                <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: var(--btc-gray);">
-                    Without money, every trade requires both parties to want exactly what the other has — at the same time and place.
-                </p>
+            <div class="callout callout-example">
+                <div class="callout-title">Imagine This</div>
+                <p>You're using a ruler to measure a table. Every year, someone sneaks in and shaves a quarter-inch off your ruler. The table hasn't changed — but every time you measure, it looks bigger. That's what's happening to the dollar. The economy is the table. The dollar is the ruler. And the Federal Reserve has been shaving the ruler for 111 years.</p>
             </div>
 
-            <p><span class="glossary-term" data-term="money">Money</span> solves this problem. It's a tool — an intermediary good that everyone agrees to accept, so you can sell your chickens to anyone, hold the value, and buy shoes whenever you want. Good money needs to serve three roles:</p>
+            <p>Here's where inflation becomes undeniable: <strong>compare prices in dollars to prices in gold.</strong></p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>1913 (Dollars)</th>
+                        <th>2024 (Dollars)</th>
+                        <th>Dollar Change</th>
+                        <th>1913 (Gold Oz)</th>
+                        <th>2024 (Gold Oz)</th>
+                        <th>Gold Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Barrel of Oil</strong></td>
+                        <td>$0.95</td>
+                        <td>$77</td>
+                        <td style="color: var(--btc-danger); font-weight: 700;">+8,005%</td>
+                        <td>0.046 oz</td>
+                        <td>0.029 oz</td>
+                        <td style="color: var(--btc-success); font-weight: 700;">-36%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Median Home</strong></td>
+                        <td>$2,500</td>
+                        <td>$412,000</td>
+                        <td style="color: var(--btc-danger); font-weight: 700;">+16,380%</td>
+                        <td>121 oz</td>
+                        <td>157 oz</td>
+                        <td style="color: var(--btc-info); font-weight: 700;">+30%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>Read those numbers again. <strong>Read them slowly.</strong></p>
 
             <div class="stat-row">
                 <div class="stat-card animate-in">
-                    <div class="stat-number" style="font-size: 1.8rem;">💱</div>
-                    <div class="stat-label"><span class="glossary-term" data-term="medium-of-exchange" style="color: rgba(255,255,255,0.7); border-bottom-color: var(--btc-accent);">Medium of Exchange</span></div>
+                    <div class="stat-number" data-count-to="8005" data-suffix="%" data-decimals="0">0%</div>
+                    <div class="stat-label">Oil in Dollars (1913 → 2024)</div>
                 </div>
                 <div class="stat-card animate-in">
-                    <div class="stat-number" style="font-size: 1.8rem;">🏦</div>
-                    <div class="stat-label"><span class="glossary-term" data-term="store-of-value" style="color: rgba(255,255,255,0.7); border-bottom-color: var(--btc-accent);">Store of Value</span></div>
+                    <div class="stat-number" data-count-to="36" data-suffix="%">0%</div>
+                    <div class="stat-label">Oil in Gold (Decreased)</div>
                 </div>
                 <div class="stat-card animate-in">
-                    <div class="stat-number" style="font-size: 1.8rem;">📏</div>
-                    <div class="stat-label"><span class="glossary-term" data-term="unit-of-account" style="color: rgba(255,255,255,0.7); border-bottom-color: var(--btc-accent);">Unit of Account</span></div>
+                    <div class="stat-number" data-count-to="99" data-suffix="%">0%</div>
+                    <div class="stat-label">Dollar Value Lost in Gold Since 1913</div>
                 </div>
             </div>
 
-            <p>Throughout history, people have used shells, beads, salt, cattle, and dozens of other things as money. But over time, <strong>money always trends toward one</strong> — the one thing that best holds value, is hardest to produce more of, and is most widely accepted.</p>
-
-            <p>For thousands of years, that was <span class="glossary-term" data-term="gold">gold</span>. Gold is rare, it doesn't rust or corrode, it's divisible, and you can't just print more of it. Gold earned its role as money because of its physical properties — not because any government declared it.</p>
-
-            <div class="callout callout-example">
-                <div class="callout-title">A Real Pattern</div>
-                <p>Every civilization that discovered gold independently — from the Egyptians to the Aztecs to the Chinese — came to the same conclusion: <strong>this is money.</strong> Not because they talked to each other. Because gold has the right properties. Money isn't chosen by decree. It's discovered through competition.</p>
-            </div>
-
-            <p>Eventually, carrying gold became impractical. Governments created paper currencies backed by gold — a receipt that said "this note can be exchanged for gold at the bank." That system worked, until governments decided they wanted to spend more than their gold could back.</p>
-
-            <p>In 1971, President Nixon officially ended the gold standard. The dollar was no longer redeemable for gold. The money you carry today is <span class="glossary-term" data-term="fiat-currency">fiat currency</span> — it has value because the government says it does, and because everyone agrees to accept it. There is nothing backing it except trust.</p>
+            <p><strong>Oil priced in dollars exploded 8,005%. Oil priced in gold actually fell 36%.</strong> A barrel of oil is cheaper in gold today than it was in 1913. Housing? It went up 30% in gold over 111 years — driven by population growth, land scarcity, and zoning restrictions. But compare that 30% to the <strong>16,380%</strong> dollar increase. Almost all of that sticker shock is the dollar losing value, not the house gaining it. In real terms — measured in gold — the world is more productive and most things should cost about the same or less. They don't in dollars, because the dollar itself is worth less.</p>
 
             <div class="callout callout-key">
-                <div class="callout-title">Key Concept</div>
-                <p><strong>Money trends toward one.</strong> Historically that was gold. Currently it's the US dollar. But the dollar's reign depends on one thing: people's continued trust that it will hold value. What happens when that trust erodes?</p>
+                <div class="callout-title">Why Gold Is the Better Ruler</div>
+                <p>Gold's supply grows by about 1.5–2% per year through mining — roughly matching the growth rate of the global economy. You can't print gold. You can't create 40% more of it overnight. For thousands of years, gold served as money precisely because its supply was hard to manipulate. It was the ultimate honest ruler.</p>
             </div>
 
+            <p>The dollar, on the other hand, has no limit. The Federal Reserve can create as much as it wants, whenever it wants, for whatever reason it wants. And it does.</p>
+
+            <div class="callout callout-key">
+                <div class="callout-title">Two Schools of Thought</div>
+                <p><strong><span class="glossary-term" data-term="keynesian-economics">Keynesian economists</span></strong> argue moderate inflation is healthy. It encourages spending, prevents hoarding, and keeps the economy moving. From this view, the dollar losing value is a feature, not a bug — a tool for managing the economy.</p>
+                <p><strong><span class="glossary-term" data-term="austrian-economics">Austrian economists</span></strong> say that narrative confuses cause and effect. They argue that inflation is an expansion of the money supply that transfers wealth — from savers to borrowers, from ordinary people to those closest to the money printer. From this view, the dollar losing 97% of its value is theft in slow motion.</p>
+                <p>This course will present both perspectives. But we'll always check them against the data — because facts don't care about economic theories.</p>
+            </div>
+
+            <div class="callout callout-warning">
+                <div class="callout-title">The 2% Lie</div>
+                <p>The Federal Reserve targets "2% annual inflation" and calls it responsible policy. Sound reasonable? Even at a clean 2%, compounding over 111 years would destroy 89% of your purchasing power. But the actual loss is <strong>97%</strong> — because real inflation has averaged closer to <strong>3.2% per year</strong>, not 2%. The Fed's own data proves the target was never actually met. Meanwhile, gold — inflating at roughly 1.5–2% as the actual economy grows — has kept its purchasing power almost perfectly intact. Which system looks healthy when you see the long-term picture?</p>
+            </div>
         </div>
     </section>
 
-    <!-- Wave: warm → white -->
     <div class="wave-divider" style="background:#FDF8F0">
         <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
             <path fill="#FFFFFF" d="M0,30C240,10,480,50,720,25C960,50,1200,10,1440,30L1440,60L0,60Z"/>
         </svg>
     </div>
 
-    <!-- ===== SECTION 3: The Long Drain ===== -->
+    <!-- ===== SECTION 3: What Is Money? ===== -->
     <section class="section-band bg-white">
         <div class="content">
             <div class="section-intro">
                 <span class="section-number">03</span>
-                <h2>The Long Drain</h2>
+                <h2>What Is Money?</h2>
             </div>
 
-            <p>If the dollar is losing value, you should be able to see it — and you can. Not in any single price spike, but in the long, relentless trend that stretches back decades. Look at the numbers:</p>
+            <p>Before we can understand why the dollar is failing, we need to understand what money is and how it evolved.</p>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>1970</th>
-                        <th>1990</th>
-                        <th>2000</th>
-                        <th>2024</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Median Home Price</strong></td>
-                        <td>$23,000</td>
-                        <td>$79,100</td>
-                        <td>$119,600</td>
-                        <td>$420,400</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Gallon of Gas</strong></td>
-                        <td>$0.36</td>
-                        <td>$1.16</td>
-                        <td>$1.51</td>
-                        <td>$3.50</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Dozen Eggs</strong></td>
-                        <td>$0.62</td>
-                        <td>$1.00</td>
-                        <td>$0.96</td>
-                        <td>$3.20</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Gallon of Milk</strong></td>
-                        <td>$1.15</td>
-                        <td>$2.15</td>
-                        <td>$2.79</td>
-                        <td>$4.05</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Median Household Income</strong></td>
-                        <td>$9,870</td>
-                        <td>$29,940</td>
-                        <td>$41,990</td>
-                        <td>$80,610</td>
-                    </tr>
-                </tbody>
-            </table>
+            <h3>The Problem Money Solves</h3>
 
-            <p>At first glance, it looks like wages went up too. But watch the ratios. In 1970, the median home cost <strong>2.3x</strong> the median income. In 2024, it costs <strong>5.2x</strong>. You're earning "more" dollars, but each dollar buys less house, less food, less gas, less life.</p>
+            <p>Early humans bartered — I trade you a chicken for your basket. But this creates a problem called the <span class="glossary-term" data-term="double-coincidence-of-wants">double coincidence of wants</span>. You have chickens. I have baskets. But what if you don't want baskets, and I don't want chickens? Trade breaks down.</p>
+
+            <p>Money solved this by becoming a universal intermediary. I sell my baskets for money, you sell your chickens for money, and now I can buy your chickens anytime. Money is the lubricant that makes the economy work.</p>
+
+            <div class="diagram animate-in">
+                <div class="diagram-title">How Money Solves the Barter Problem</div>
+                <div class="flow-diagram">
+                    <div class="flow-step problem">Barter Breaks Down</div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">Introduce Money</div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step solution">Trade Flourishes</div>
+                </div>
+            </div>
+
+            <h3>Three Functions of Money</h3>
+
+            <p>Good money must do three things:</p>
 
             <div class="stat-row">
                 <div class="stat-card animate-in">
-                    <div class="stat-number" data-count-to="97" data-suffix="%">0%</div>
-                    <div class="stat-label">Dollar's Value Lost Since 1913</div>
+                    <div class="icon-circle icon-orange" style="font-size: 1.5rem; width: 48px; height: 48px; margin: 0 auto 0.5rem;">💱</div>
+                    <div class="stat-label">Medium of Exchange</div>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--btc-gray);">Widely accepted in trade so people don't have to barter.</p>
                 </div>
                 <div class="stat-card animate-in">
-                    <div class="stat-number" data-count-to="1730" data-suffix="%" data-decimals="0">0%</div>
-                    <div class="stat-label">Home Price Increase Since 1970</div>
+                    <div class="icon-circle icon-gold" style="font-size: 1.5rem; width: 48px; height: 48px; margin: 0 auto 0.5rem;">💾</div>
+                    <div class="stat-label">Store of Value</div>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--btc-gray);">Maintains purchasing power over time so you can save.</p>
                 </div>
                 <div class="stat-card animate-in">
-                    <div class="stat-number" data-count-to="717" data-suffix="%" data-decimals="0">0%</div>
-                    <div class="stat-label">Income Increase Since 1970</div>
+                    <div class="icon-circle icon-blue" style="font-size: 1.5rem; width: 48px; height: 48px; margin: 0 auto 0.5rem;">📏</div>
+                    <div class="stat-label">Unit of Account</div>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--btc-gray);">A standard measure for pricing goods and services.</p>
                 </div>
             </div>
 
-            <!-- Purchasing Power Decline Graphic -->
-            <div class="purchasing-power-graphic animate-in">
-                <div class="graphic-title">Purchasing Power of $1 (1913 → 2024)</div>
-                <svg viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto">
-                    <defs>
-                        <linearGradient id="ppLine" x1="0" y1="0" x2="680" y2="0">
-                            <stop offset="0%" stop-color="#F7931A"/>
-                            <stop offset="100%" stop-color="#E74C3C"/>
-                        </linearGradient>
-                        <linearGradient id="ppFill" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stop-color="#F7931A" stop-opacity="0.25"/>
-                            <stop offset="100%" stop-color="#E74C3C" stop-opacity="0.03"/>
-                        </linearGradient>
-                    </defs>
-                    <!-- Grid lines -->
-                    <line x1="60" y1="30" x2="640" y2="30" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-                    <line x1="60" y1="70" x2="640" y2="70" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-                    <line x1="60" y1="110" x2="640" y2="110" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-                    <line x1="60" y1="150" x2="640" y2="150" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-                    <!-- Y-axis labels -->
-                    <text x="50" y="35" fill="rgba(255,255,255,0.35)" font-size="10" text-anchor="end" font-family="Segoe UI, sans-serif">$1.00</text>
-                    <text x="50" y="75" fill="rgba(255,255,255,0.35)" font-size="10" text-anchor="end" font-family="Segoe UI, sans-serif">$0.75</text>
-                    <text x="50" y="115" fill="rgba(255,255,255,0.35)" font-size="10" text-anchor="end" font-family="Segoe UI, sans-serif">$0.50</text>
-                    <text x="50" y="155" fill="rgba(255,255,255,0.35)" font-size="10" text-anchor="end" font-family="Segoe UI, sans-serif">$0.25</text>
-                    <!-- Decline curve (fill area) -->
-                    <path d="M60,30 C120,32 180,40 240,55 C300,72 340,90 400,115 C440,130 500,142 540,148 L640,155 L640,170 L60,170 Z" fill="url(#ppFill)"/>
-                    <!-- Decline curve (line) -->
-                    <path d="M60,30 C120,32 180,40 240,55 C300,72 340,90 400,115 C440,130 500,142 540,148 L640,155" fill="none" stroke="url(#ppLine)" stroke-width="3" stroke-linecap="round"/>
-                    <!-- Key points -->
-                    <circle cx="60" cy="30" r="5" fill="#F7931A"/>
-                    <circle cx="240" cy="55" r="4" fill="#E8B84B"/>
-                    <circle cx="400" cy="115" r="4" fill="#D4854A"/>
-                    <circle cx="640" cy="155" r="5" fill="#E74C3C"/>
-                    <!-- Point labels -->
-                    <text x="60" y="18" fill="#F7931A" font-size="11" font-weight="700" text-anchor="middle" font-family="Segoe UI, sans-serif">$1.00</text>
-                    <text x="240" y="46" fill="#E8B84B" font-size="10" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">$0.64</text>
-                    <text x="400" y="106" fill="#D4854A" font-size="10" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">$0.25</text>
-                    <text x="640" y="146" fill="#E74C3C" font-size="11" font-weight="700" text-anchor="middle" font-family="Segoe UI, sans-serif">$0.03</text>
-                    <!-- X-axis dates -->
-                    <text x="60" y="190" fill="rgba(255,255,255,0.4)" font-size="11" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">1913</text>
-                    <text x="240" y="190" fill="rgba(255,255,255,0.35)" font-size="11" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">1950</text>
-                    <text x="400" y="190" fill="rgba(255,255,255,0.35)" font-size="11" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">1985</text>
-                    <text x="640" y="190" fill="rgba(255,255,255,0.4)" font-size="11" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">2024</text>
-                    <!-- Fed Reserve marker -->
-                    <line x1="60" y1="30" x2="60" y2="170" stroke="rgba(247,147,26,0.3)" stroke-width="1" stroke-dasharray="4,3"/>
-                    <text x="67" y="168" fill="rgba(247,147,26,0.5)" font-size="8" font-family="Segoe UI, sans-serif">Fed Created</text>
-                </svg>
+            <h3>Gold Wins</h3>
+
+            <p>Thousands of years ago, civilizations independently discovered that gold worked best. It's scarce, durable, divisible, portable, and widely accepted. Civilizations from Egypt to Rome to China converged on gold as the ideal money — not because anyone mandated it, but because it worked better than everything else.</p>
+
+            <div class="callout callout-info">
+                <div class="callout-title">The Real Pattern</div>
+                <p>When multiple independent cultures choose the same solution, that's not an accident. It's evidence that the solution is <em>right</em>. Gold wasn't imposed by decree — it was discovered through trial and error to be the best money that naturally emerged. For thousands of years, gold was <em>the</em> money.</p>
             </div>
 
-            <p>That 97% figure isn't an accident of history — notice the date. 1913 is when the <span class="glossary-term" data-term="federal-reserve">Federal Reserve</span> was created, giving a central bank the power to expand the money supply. The dollar has been on a one-way trip downward ever since.</p>
+            <h3>The Break: 1971</h3>
 
-            <p>Homes went up 1,730%. Incomes only went up 717%. That gap isn't supply and demand. Supply and demand causes <em>short-term</em> fluctuations — a drought drives up egg prices for a season, a housing boom inflates one city's market. But when <strong>everything</strong> gets more expensive, consistently, for 50+ years? That's not any single market. That's the money itself.</p>
+            <p>In 1971, President Nixon ended the gold standard. The dollar was no longer backed by a fixed amount of gold. Instead, it became <span class="glossary-term" data-term="fiat-currency">fiat currency</span> — money by government decree, with nothing backing it but the government's promise to accept it for taxes.</p>
 
-            <div class="callout callout-warning">
-                <div class="callout-title">This Is Not Supply and Demand</div>
-                <p>When gas goes up one summer because of a refinery shutdown — that's supply and demand. When gas, <em>and</em> eggs, <em>and</em> milk, <em>and</em> housing, <em>and</em> healthcare, <em>and</em> tuition all go up relentlessly for decades? There's only one thing they all have in common: <strong>they're all priced in the same dollars.</strong> The problem isn't the goods. The problem is the unit of measurement.</p>
+            <p>This is where the two economic schools diverge sharply. <span class="glossary-term" data-term="keynesian-economics">Keynesian economists</span> see this as necessary evolution — freeing governments to respond flexibly to crises. <span class="glossary-term" data-term="austrian-economics">Austrian economists</span> see it as the moment governments gave themselves permission to debase their citizens' savings without limit.</p>
+
+            <p><strong>What happened to the dollar after 1971?</strong> The numbers are staggering. In 1971, gold was fixed at $35 per ounce. Today it trades above $4,400. That's not gold "going up" — that's the dollar collapsing against real money. The dollar has lost over <strong>99%</strong> of its value measured in gold since the tether was cut. And the acceleration is the key: it took 58 years (1913–1971) for the dollar to lose about 41% of its gold value — from $20.67 to $35 per ounce. It took just 55 more years to lose virtually all of what remained.</p>
+
+            <div class="stat-row">
+                <div class="stat-card animate-in">
+                    <div class="stat-number" style="font-size: 2.2rem;">$35</div>
+                    <div class="stat-label">Gold per oz in 1971</div>
+                </div>
+                <div class="stat-card animate-in">
+                    <div class="stat-number" style="font-size: 2.2rem;">$4,400+</div>
+                    <div class="stat-label">Gold per oz in 2026</div>
+                </div>
+                <div class="stat-card animate-in">
+                    <div class="stat-number" data-count-to="99" data-suffix="%">0%</div>
+                    <div class="stat-label">Dollar value lost vs gold since 1971</div>
+                </div>
             </div>
 
-            <p>This is <span class="glossary-term" data-term="inflation">inflation</span> — not "prices going up," but the <span class="glossary-term" data-term="money-supply">money supply</span> expanding faster than the supply of goods and services. More dollars chasing not that much more stuff. Every new dollar created dilutes every dollar already in your pocket.</p>
-
-            <div class="genesis-quote">
-                <div class="quote-text">"Inflation is taxation without legislation."</div>
-                <div class="quote-source">— Milton Friedman, Nobel Prize-winning economist</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Wave: white → warm -->
-    <div class="wave-divider" style="background:#FFFFFF">
-        <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-            <path fill="#FDF8F0" d="M0,15C300,50,600,0,900,40C1150,55,1350,25,1440,35L1440,60L0,60Z"/>
-        </svg>
-    </div>
-
-    <!-- ===== SECTION 4: When Innovation Beats the Printer ===== -->
-    <section class="section-band bg-warm">
-        <div class="content">
-            <div class="section-intro">
-                <span class="section-number">04</span>
-                <h2>When Innovation Beats the Printer</h2>
-            </div>
-
-            <p>If money printing makes everything more expensive, why are some things getting <em>cheaper</em>? Great question — and the answer actually proves the point.</p>
-
-            <div class="callout callout-example">
-                <div class="callout-title">A Real Example</div>
-                <p>In 1997, a 32-inch standard-definition TV cost around <strong>$1,000</strong>. Today, you can buy a <strong>65-inch 4K smart TV</strong> — four times the screen size, incomparably better picture, built-in streaming — for under <strong>$400</strong>. That's a better product at a fraction of the price.</p>
-            </div>
-
-            <p>Here's what happened: technology and manufacturing got so much more efficient that the cost of production <em>fell faster than the money printer could dilute the dollar</em>. Innovation outran <span class="glossary-term" data-term="inflation">inflation</span>.</p>
-
-            <p>You see this in computing, electronics, solar panels, and communication. The cost of a gigabyte of storage was $300,000 in 1980. Today it's about $0.015. That's not because the dollar got stronger — it's because human productivity and innovation are <em>that</em> powerful.</p>
+            <p>Before 1971, the gold standard acted as a leash — governments could only print as many dollars as they had gold to back. After 1971, the leash came off. The data from Section 2 — oil and housing getting <em>cheaper</em> in gold but <em>exploding</em> in dollars — that acceleration happened almost entirely after this moment.</p>
 
             <div class="callout callout-key">
-                <div class="callout-title">The Hidden Truth</div>
-                <p>In a world without money printing, <strong>most things should be getting cheaper over time</strong> — not more expensive. As technology improves and production becomes more efficient, prices should naturally fall. The fact that they don't — that your grocery bill keeps climbing despite incredible advances in farming, logistics, and technology — tells you exactly how aggressively the money supply is expanding. <strong>Inflation is stealing the gains that innovation should be giving you.</strong></p>
+                <div class="callout-title">Money Trends Toward One</div>
+                <p>Throughout history, money doesn't stay diverse. It consolidates. People abandon weak money for strong money. The dollar won because it was stronger than other fiat currencies. Bitcoin is emerging because it's stronger than all existing forms of money combined — as a store of value, at least. We'll explore why in the next lesson.</p>
             </div>
-
-            <div class="genesis-quote">
-                <div class="quote-text">"The natural state of a free market is that prices fall to the marginal cost of production."</div>
-                <div class="quote-source">— Jeff Booth, <em>The Price of Tomorrow</em></div>
-            </div>
-
-            <p>Think about what that means. In a free market with honest money, competition and innovation should drive prices <em>down</em> toward what it actually costs to make something. That's progress working in your favor. But when the money supply is constantly expanding, it masks that progress — you never see the savings. Prices stay flat or climb, and you assume that's normal. It's not. You're being robbed of a future where life gets cheaper every year.</p>
-
-            <div class="comparison-grid">
-                <div class="comparison-card good animate-in">
-                    <h4><span class="icon-circle icon-green">📉</span> Innovation Wins (Prices Fall)</h4>
-                    <ul>
-                        <li>TVs and electronics</li>
-                        <li>Computing power</li>
-                        <li>Data storage</li>
-                        <li>Solar panels</li>
-                        <li>Communication costs</li>
-                    </ul>
-                </div>
-                <div class="comparison-card animate-in">
-                    <h4><span class="icon-circle icon-red">📈</span> Money Printer Wins (Prices Rise)</h4>
-                    <ul>
-                        <li class="con">Housing</li>
-                        <li class="con">Healthcare</li>
-                        <li class="con">College tuition</li>
-                        <li class="con">Groceries and food</li>
-                        <li class="con">Childcare</li>
-                    </ul>
-                </div>
-            </div>
-
-            <p>Notice the pattern: the things that are getting more expensive are the things you <em>need</em> — shelter, food, health, education. The things getting cheaper are the things technology can disrupt faster than the government can print. When the things you can't live without keep costing more, that's not progress. That's a broken monetary system.</p>
-
         </div>
     </section>
 
-    <!-- Wave: warm → dark -->
-    <div class="wave-divider" style="background:#FDF8F0">
+    <div class="wave-divider" style="background:#FFFFFF">
         <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
             <path fill="#0F0F23" d="M0,25L360,40L720,15L1080,45L1440,20L1440,60L0,60Z"/>
         </svg>
     </div>
 
-    <!-- ===== SECTION 5: 40% of All Dollars (Dark Emphasis) ===== -->
+    <!-- ===== SECTION 4: The Money Printer (Dark Climax) ===== -->
     <section class="section-band bg-dark-content">
         <div class="content">
             <div class="section-intro">
-                <span class="section-number">05</span>
-                <h2>40% of All Dollars Ever Created</h2>
+                <span class="section-number">04</span>
+                <h2>The Inflation Machine Unleashed</h2>
             </div>
 
             <p>Everything described above has been happening gradually for decades. But in 2020, the pace went from a steady drip to a firehose.</p>
 
             <p>When COVID-19 shut down the economy, the US government responded with trillions in stimulus spending. The Federal Reserve created new money on an unprecedented scale. The <span class="glossary-term" data-term="m2">M2 money supply</span> — a measure of all dollars in circulation including savings and money market accounts — tells the story:</p>
 
-            <div class="diagram">
-                <div class="diagram-title">US M2 Money Supply (Trillions of Dollars)</div>
+            <div class="diagram animate-in">
+                <div class="diagram-title">US M2 Money Supply Growth</div>
                 <div class="m2-chart">
-                    <div class="m2-annotation">+40% in ~4 years</div>
+                    <div class="m2-annotation">+40% in ~2 years</div>
                     <div class="m2-bar-group">
                         <div class="m2-bar-value">$4.6T</div>
                         <div class="m2-bar" style="height: 35px; background: linear-gradient(to top, #3498DB, #5DADE2);"></div>
@@ -1797,324 +1569,197 @@
                 </p>
             </div>
 
-            <p>Read that chart carefully. It took <strong>200+ years</strong> (from the founding of the republic through early 2020) to put ~$15.4 trillion into circulation. Then the money supply exploded — <strong>growing by roughly 40%</strong> in just two years, jumping to over $21 trillion by 2022 and remaining at that elevated level through 2024. Over <strong>$6 trillion in new dollars</strong> were injected into the system, and that new baseline hasn't come back down.</p>
-
-            <!-- Money Printer Graphic — Vintage Printing Press -->
-            <div class="money-printer-graphic animate-in">
-                <svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg" style="max-width:620px">
-                    <defs>
-                        <linearGradient id="pressBody" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stop-color="#5C4033"/>
-                            <stop offset="50%" stop-color="#3E2723"/>
-                            <stop offset="100%" stop-color="#2A1A10"/>
-                        </linearGradient>
-                        <linearGradient id="metalGrad" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stop-color="#8A8A8A"/>
-                            <stop offset="50%" stop-color="#6A6A6A"/>
-                            <stop offset="100%" stop-color="#4A4A4A"/>
-                        </linearGradient>
-                        <linearGradient id="rollerGrad" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stop-color="#7A7A7A"/>
-                            <stop offset="40%" stop-color="#555555"/>
-                            <stop offset="100%" stop-color="#3A3A3A"/>
-                        </linearGradient>
-                        <linearGradient id="billGrad" x1="0" y1="0" x2="1" y2="0">
-                            <stop offset="0%" stop-color="#2ECC71" stop-opacity="0.9"/>
-                            <stop offset="100%" stop-color="#27AE60" stop-opacity="0.7"/>
-                        </linearGradient>
-                        <linearGradient id="gearGrad" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#999"/>
-                            <stop offset="100%" stop-color="#555"/>
-                        </linearGradient>
-                        <radialGradient id="brassKnob" cx="50%" cy="40%">
-                            <stop offset="0%" stop-color="#D4A843"/>
-                            <stop offset="100%" stop-color="#8B6914"/>
-                        </radialGradient>
-                    </defs>
-
-                    <!-- Label -->
-                    <text x="350" y="18" fill="rgba(255,255,255,0.35)" font-size="11" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif" letter-spacing="0.08em">THE MONEY PRINTER</text>
-
-                    <!-- === PRESS BODY — heavy wooden/iron frame === -->
-                    <!-- Main body -->
-                    <rect x="220" y="55" width="210" height="110" rx="6" fill="url(#pressBody)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
-                    <!-- Top frame beam -->
-                    <rect x="215" y="48" width="220" height="12" rx="3" fill="url(#metalGrad)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-                    <!-- Decorative rivets on top beam -->
-                    <circle cx="230" cy="54" r="2.5" fill="#888" stroke="#666" stroke-width="0.5"/>
-                    <circle cx="325" cy="54" r="2.5" fill="#888" stroke="#666" stroke-width="0.5"/>
-                    <circle cx="420" cy="54" r="2.5" fill="#888" stroke="#666" stroke-width="0.5"/>
-
-                    <!-- Brass nameplate -->
-                    <rect x="275" y="68" width="100" height="18" rx="2" fill="url(#brassKnob)" stroke="#6B4F1D" stroke-width="0.8" opacity="0.85"/>
-                    <text x="325" y="81" fill="#2A1A10" font-size="8" font-weight="700" text-anchor="middle" font-family="Georgia, serif" letter-spacing="0.12em">FEDERAL RESERVE</text>
-
-                    <!-- === ROLLERS — the press mechanism === -->
-                    <!-- Top roller -->
-                    <ellipse cx="325" cy="100" rx="70" ry="10" fill="url(#rollerGrad)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-                    <line x1="255" y1="100" x2="395" y2="100" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-                    <!-- Bottom roller -->
-                    <ellipse cx="325" cy="125" rx="70" ry="10" fill="url(#rollerGrad)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-                    <line x1="255" y1="125" x2="395" y2="125" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-                    <!-- Roller gap — dark slot where bills feed through -->
-                    <rect x="260" y="108" width="130" height="14" rx="2" fill="rgba(0,0,0,0.5)"/>
-
-                    <!-- === GEAR — visible on the right side, spinning === -->
-                    <g transform="translate(440, 100)">
-                        <g>
-                            <animateTransform attributeName="transform" type="rotate" values="0;360" dur="4s" repeatCount="indefinite"/>
-                            <!-- Gear teeth (8 teeth around a circle) -->
-                            <rect x="-4" y="-22" width="8" height="10" rx="1" fill="url(#gearGrad)"/>
-                            <rect x="-4" y="12" width="8" height="10" rx="1" fill="url(#gearGrad)"/>
-                            <rect x="-22" y="-4" width="10" height="8" rx="1" fill="url(#gearGrad)"/>
-                            <rect x="12" y="-4" width="10" height="8" rx="1" fill="url(#gearGrad)"/>
-                            <rect x="11" y="-16" width="9" height="8" rx="1" fill="url(#gearGrad)" transform="rotate(45)"/>
-                            <rect x="-20" y="8" width="9" height="8" rx="1" fill="url(#gearGrad)" transform="rotate(45)"/>
-                            <rect x="8" y="11" width="9" height="8" rx="1" fill="url(#gearGrad)" transform="rotate(-45)"/>
-                            <rect x="-17" y="-19" width="9" height="8" rx="1" fill="url(#gearGrad)" transform="rotate(-45)"/>
-                            <!-- Gear body -->
-                            <circle cx="0" cy="0" r="14" fill="url(#gearGrad)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-                            <!-- Gear center hole -->
-                            <circle cx="0" cy="0" r="4" fill="#2A1A10" stroke="#555" stroke-width="1"/>
-                        </g>
-                    </g>
-
-                    <!-- Small gear meshed with big gear -->
-                    <g transform="translate(440, 135)">
-                        <g>
-                            <animateTransform attributeName="transform" type="rotate" values="360;0" dur="2.5s" repeatCount="indefinite"/>
-                            <rect x="-3" y="-14" width="6" height="7" rx="1" fill="url(#gearGrad)"/>
-                            <rect x="-3" y="7" width="6" height="7" rx="1" fill="url(#gearGrad)"/>
-                            <rect x="-14" y="-3" width="7" height="6" rx="1" fill="url(#gearGrad)"/>
-                            <rect x="7" y="-3" width="7" height="6" rx="1" fill="url(#gearGrad)"/>
-                            <circle cx="0" cy="0" r="9" fill="url(#gearGrad)" stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
-                            <circle cx="0" cy="0" r="3" fill="#2A1A10" stroke="#555" stroke-width="0.8"/>
-                        </g>
-                    </g>
-
-                    <!-- === CRANK HANDLE — on the left side === -->
-                    <line x1="215" y1="112" x2="185" y2="112" stroke="url(#metalGrad)" stroke-width="4" stroke-linecap="round"/>
-                    <circle cx="182" cy="112" r="6" fill="url(#brassKnob)" stroke="#6B4F1D" stroke-width="1"/>
-                    <circle cx="182" cy="112" r="2" fill="#2A1A10"/>
-
-                    <!-- === LEGS — sturdy iron press legs === -->
-                    <rect x="232" y="165" width="12" height="40" rx="2" fill="url(#metalGrad)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
-                    <rect x="405" y="165" width="12" height="40" rx="2" fill="url(#metalGrad)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
-                    <!-- Feet -->
-                    <rect x="226" y="200" width="24" height="6" rx="2" fill="#555" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-                    <rect x="399" y="200" width="24" height="6" rx="2" fill="#555" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-                    <!-- Cross brace -->
-                    <line x1="244" y1="190" x2="411" y2="190" stroke="#555" stroke-width="3" stroke-linecap="round"/>
-
-                    <!-- === PAPER FEED — blank paper going in the top === -->
-                    <rect x="300" y="30" width="50" height="28" rx="2" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5">
-                        <animate attributeName="y" values="25;48" dur="2.5s" repeatCount="indefinite"/>
-                        <animate attributeName="opacity" values="0.5;0.15" dur="2.5s" repeatCount="indefinite"/>
-                    </rect>
-
-                    <!-- === DOLLAR BILLS coming out the bottom === -->
-                    <g opacity="0.9">
-                        <rect x="280" y="140" width="90" height="22" rx="3" fill="url(#billGrad)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5">
-                            <animate attributeName="y" values="135;175" dur="2s" repeatCount="indefinite"/>
-                            <animate attributeName="opacity" values="1;0.2" dur="2s" repeatCount="indefinite"/>
-                        </rect>
-                        <text x="325" y="155" fill="rgba(255,255,255,0.8)" font-size="11" font-weight="700" text-anchor="middle" font-family="Georgia, serif">
-                            <animate attributeName="y" values="150;190" dur="2s" repeatCount="indefinite"/>
-                            $  $  $
-                        </text>
-                    </g>
-                    <g opacity="0.7">
-                        <rect x="290" y="140" width="90" height="22" rx="3" fill="url(#billGrad)" stroke="rgba(255,255,255,0.1)" stroke-width="0.5">
-                            <animate attributeName="y" values="135;180" dur="2.4s" begin="0.5s" repeatCount="indefinite"/>
-                            <animate attributeName="opacity" values="0.8;0.1" dur="2.4s" begin="0.5s" repeatCount="indefinite"/>
-                        </rect>
-                        <text x="335" y="155" fill="rgba(255,255,255,0.5)" font-size="11" font-weight="700" text-anchor="middle" font-family="Georgia, serif">
-                            <animate attributeName="y" values="150;195" dur="2.4s" begin="0.5s" repeatCount="indefinite"/>
-                            $  $  $
-                        </text>
-                    </g>
-
-                    <!-- === YOUR SAVINGS — shrinking on the left === -->
-                    <text x="80" y="85" fill="rgba(255,255,255,0.5)" font-size="10" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">YOUR</text>
-                    <text x="80" y="99" fill="rgba(255,255,255,0.5)" font-size="10" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">SAVINGS</text>
-                    <text x="80" y="132" fill="#E74C3C" font-size="32" font-weight="700" text-anchor="middle" font-family="Georgia, serif">$</text>
-                    <text x="80" y="132" fill="#E74C3C" font-size="32" font-weight="700" text-anchor="middle" font-family="Georgia, serif" opacity="0.3">
-                        <animate attributeName="font-size" values="32;22" dur="3s" repeatCount="indefinite"/>
-                        $
-                    </text>
-                    <!-- Arrow showing dilution -->
-                    <line x1="120" y1="112" x2="172" y2="112" stroke="#E74C3C" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.5"/>
-                    <polygon points="170,107 180,112 170,117" fill="#E74C3C" opacity="0.5"/>
-
-                    <!-- === IMPACT LABEL — on the right === -->
-                    <text x="540" y="85" fill="rgba(255,255,255,0.45)" font-size="10" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">EVERY NEW DOLLAR</text>
-                    <text x="540" y="100" fill="rgba(255,255,255,0.45)" font-size="10" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">DILUTES YOURS</text>
-
-                    <!-- Dripping effect dots -->
-                    <circle cx="540" cy="118" r="3" fill="#E74C3C" opacity="0.6">
-                        <animate attributeName="cy" values="118;145" dur="1.8s" repeatCount="indefinite"/>
-                        <animate attributeName="opacity" values="0.6;0" dur="1.8s" repeatCount="indefinite"/>
-                    </circle>
-                    <circle cx="558" cy="118" r="2.5" fill="#E74C3C" opacity="0.5">
-                        <animate attributeName="cy" values="118;140" dur="1.5s" begin="0.3s" repeatCount="indefinite"/>
-                        <animate attributeName="opacity" values="0.5;0" dur="1.5s" begin="0.3s" repeatCount="indefinite"/>
-                    </circle>
-                    <circle cx="522" cy="118" r="2" fill="#E74C3C" opacity="0.4">
-                        <animate attributeName="cy" values="118;138" dur="2s" begin="0.6s" repeatCount="indefinite"/>
-                        <animate attributeName="opacity" values="0.4;0" dur="2s" begin="0.6s" repeatCount="indefinite"/>
-                    </circle>
-
-                    <!-- Bottom caption -->
-                    <text x="350" y="248" fill="rgba(255,255,255,0.3)" font-size="10" text-anchor="middle" font-family="Segoe UI, sans-serif" font-style="italic">Over $6 trillion created in ~2 years. No vote. No permission. No way to opt out.</text>
-                </svg>
-            </div>
-
-            <div class="stat-row">
-                <div class="stat-card animate-in">
-                    <div class="stat-number" data-count-to="40" data-suffix="%">0%</div>
-                    <div class="stat-label">Money Supply Growth Since 2020</div>
-                </div>
-                <div class="stat-card animate-in">
-                    <div class="stat-number" style="font-size: 2.2rem;">~$6T</div>
-                    <div class="stat-label">New Dollars in ~2 Years</div>
-                </div>
-            </div>
-
-            <p>And what happened next? Exactly what you'd expect. In June 2022, inflation hit <strong>9.1%</strong> — the highest in 40 years. Groceries surged. Rent spiked. Gas hit $5/gallon in many states. The dollars you'd been saving were suddenly worth dramatically less.</p>
+            <p>It took <strong>200+ years</strong> (from 1800 through early 2020) to put ~$15.4 trillion into circulation. Then the money supply exploded — <strong>growing by roughly 40%</strong> in just two years, jumping to over $21 trillion by 2022 and remaining elevated through 2024. Over <strong>$6 trillion in new dollars</strong> were injected into the system.</p>
 
             <div class="callout callout-warning">
-                <div class="callout-title">This Isn't Ancient History</div>
-                <p>This happened to <em>you</em>. If you had $10,000 in a savings account in January 2020, its purchasing power dropped to roughly $8,100 by 2024 — even if the number in your account didn't change. You didn't spend it. You didn't lose it. It was taken from you through <span class="glossary-term" data-term="inflation">inflation</span>. Every new dollar printed diluted every dollar you'd already earned.</p>
+                <div class="callout-title">What Happened Next</div>
+                <p>When you create 40% more money in two years, two things happen: (1) people have more dollars, so they bid up prices, and (2) each dollar is worth less. The official inflation rate peaked at 9.1% in 2022. But real-world experience — at the grocery store, at the gas pump, on your rent check — felt far worse.</p>
             </div>
 
             <div class="callout callout-key">
-                <div class="callout-title">The Core Problem</div>
-                <p>The US dollar has no cap on supply. There is no rule, no law, and no mechanism that prevents the government from creating more whenever it decides to. The decision to devalue your savings is made by a small group of people you didn't elect, in meetings you weren't invited to, and there is nothing you can do to stop it — <strong>unless you hold a form of money they can't print.</strong></p>
+                <div class="callout-title">The CPI Doesn't Tell the Full Story</div>
+                <p>Since 1971, the government has measured inflation using the <span class="glossary-term" data-term="cpi">Consumer Price Index (CPI)</span>. But the CPI methodology has been quietly adjusted many times — hedonic adjustments, substitution effects, geometric weighting — each revision making the number look lower. If you used the pre-1980s methodology on today's data, official inflation would often read 3–5% higher than reported.</p>
+                <p style="margin-top: 0.75rem;"><span class="glossary-term" data-term="trueflation">Trueflation</span> — a decentralized, real-time tracker monitoring over 15 million actual retail and housing prices — provides a reality check. Since 1971, the official CPI says cumulative inflation is roughly 700%. But measured against gold, the dollar has lost over 99% of its value in the same period — a 12,500% devaluation. That gap tells you everything about how well the government's own yardstick measures the damage. The CPI is measured with the very ruler that's shrinking.</p>
             </div>
 
+            <div class="callout callout-key">
+                <div class="callout-title">Both Schools Agree on What Happened, Disagree on Whether It's Good</div>
+                <p><span class="glossary-term" data-term="keynesian-economics">Keynesian economists</span> call this "fiscal stimulus" — necessary intervention to prevent economic collapse. <span class="glossary-term" data-term="austrian-economics">Austrian economists</span> call it "monetary debasement" — a hidden tax on everyone who holds dollars. Both agree on the facts: trillions of new dollars were created from nothing, driving up prices. They just disagree on whether that's a cure or a poison.</p>
+            </div>
+
+            <div class="callout callout-warning">
+                <div class="callout-title">$10,000 in 2010 Is Worth $6,800 Today</div>
+                <p>If you saved $10,000 in 2010 and did nothing with it, you lost $3,200 in purchasing power by 2024 — not from bad spending, not from a failed investment, but simply from holding the currency. That's not an investment loss. That's taxation without legislation. That's the theft of your future.</p>
+            </div>
+
+            <p><strong>Unless you hold a form of money they can't print.</strong></p>
         </div>
     </section>
 
-    <!-- Wave: dark → cool -->
     <div class="wave-divider" style="background:#0F0F23">
         <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-            <path fill="#EEF1F8" d="M0,20C360,55,720,5,1080,35C1280,50,1400,40,1440,30L1440,60L0,60Z"/>
+            <path fill="#FDF8F0" d="M0,35C200,15,400,50,600,20C800,45,1000,10,1200,40C1350,50,1440,30,1440,30L1440,60L0,60Z"/>
         </svg>
     </div>
 
-    <!-- ===== SECTION 6: The Best Money Ever Created ===== -->
+    <!-- ===== SECTION 5: Who Pays the Price? ===== -->
+    <section class="section-band bg-warm">
+        <div class="content">
+            <div class="section-intro">
+                <span class="section-number">05</span>
+                <h2>Who Pays the Price?</h2>
+            </div>
+
+            <p>Inflation isn't distributed evenly. It hits different people differently — and those who can least afford it suffer most.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>1970</th>
+                        <th>1990</th>
+                        <th>2000</th>
+                        <th>2024</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Median Home Price</strong></td>
+                        <td>$23,000</td>
+                        <td>$79,100</td>
+                        <td>$119,600</td>
+                        <td>$420,400</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gallon of Gas</strong></td>
+                        <td>$0.36</td>
+                        <td>$1.16</td>
+                        <td>$1.51</td>
+                        <td>$3.50</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dozen Eggs</strong></td>
+                        <td>$0.61</td>
+                        <td>$1.00</td>
+                        <td>$0.96</td>
+                        <td>$3.20</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gallon of Milk</strong></td>
+                        <td>$1.15</td>
+                        <td>$2.15</td>
+                        <td>$2.79</td>
+                        <td>$4.05</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Median Household Income</strong></td>
+                        <td>$8,730</td>
+                        <td>$29,940</td>
+                        <td>$41,990</td>
+                        <td>$83,730</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>At first glance, it looks like wages went up too. In 1970, the median home cost <strong>2.6x</strong> annual income. In 2024, it costs <strong>5.0x</strong>. You're earning "more" dollars, but each buys less house, less food, less of the things you need.</p>
+
+            <div class="stat-row">
+                <div class="stat-card animate-in">
+                    <div class="stat-number" data-count-to="1728" data-suffix="%" data-decimals="0">0%</div>
+                    <div class="stat-label">Home Price Increase Since 1970</div>
+                </div>
+                <div class="stat-card animate-in">
+                    <div class="stat-number" data-count-to="859" data-suffix="%" data-decimals="0">0%</div>
+                    <div class="stat-label">Income Increase Since 1970</div>
+                </div>
+                <div class="stat-card animate-in">
+                    <div class="stat-number" data-count-to="192" data-suffix="%">0%</div>
+                    <div class="stat-label">The Gap (Why You're Falling Behind)</div>
+                </div>
+            </div>
+
+            <p>Homes went up 1,728%. Incomes only went up 859%. <strong>That 869-percentage-point gap is inflation working against you.</strong> And notice which things are getting more expensive: the things you <em>need</em> — shelter, food, energy, healthcare, education. The things getting cheaper are the things technology disrupts faster than the printer runs — electronics, storage, communication.</p>
+
+            <div class="callout callout-key">
+                <div class="callout-title">A Keynesian vs Austrian Perspective</div>
+                <p>A <span class="glossary-term" data-term="keynesian-economics">Keynesian economist</span> would say "Look, wages went up too. 859% is growth." An <span class="glossary-term" data-term="austrian-economics">Austrian economist</span> would ask "Into what prices?" The wage growth is largely an illusion — you're getting more dollars that buy less of what matters.</p>
+            </div>
+
+            <div class="genesis-quote">
+                <div class="quote-text">"Inflation is taxation without legislation."</div>
+                <div class="quote-source">— Milton Friedman, Nobel Prize-winning Economist</div>
+            </div>
+
+            <p>Think about who gets hurt: people on fixed incomes (retirees), people with savings (the responsible), people earning wages without negotiating power (workers). Who benefits? Those with debt (mortgages, business loans) see their obligations shrink in real terms. Those closest to new money creation (big banks, governments, large corporations) get to spend it before prices adjust. Those at the back of the line (ordinary workers, savers) watch their purchasing power evaporate.</p>
+
+            <div class="callout callout-warning">
+                <div class="callout-title">The Real Cost</div>
+                <p>When necessities cost more and wages lag, families are forced to make impossible choices: Do we buy quality groceries or pay rent? Do we save for emergencies or pay for childcare? Do we invest in education or keep food on the table? Inflation transforms from an economic concept into a moral crisis.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="wave-divider" style="background:#FDF8F0">
+        <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path fill="#EEF1F8" d="M0,15C300,50,600,0,900,40C1150,55,1350,25,1440,35L1440,60L0,60Z"/>
+        </svg>
+    </div>
+
+    <!-- ===== SECTION 6: There's a Better Way ===== -->
     <section class="section-band bg-cool">
         <div class="content">
             <div class="section-intro">
                 <span class="section-number">06</span>
-                <h2>The Best Money Ever Created</h2>
+                <h2>Money With Scarcity Built In</h2>
             </div>
 
-            <p>So here's the situation: gold has great properties as money — it's scarce, durable, divisible, and no one can print more of it. But it's heavy, hard to transport, hard to verify, and nearly impossible to use for everyday purchases. That's why we switched to paper money in the first place.</p>
+            <p>Gold solved the inflation problem for thousands of years. But gold has practical limitations — it's heavy, hard to verify, hard to divide for small transactions. That's why we eventually switched to paper money backed by gold. Then, in 1971, we dropped the backing entirely.</p>
 
-            <p>And <span class="glossary-term" data-term="fiat-currency">fiat currency</span> (like the dollar) is easy to transact with — you can send it electronically, pay bills online, carry it in your pocket. But it inflates endlessly, can be frozen or seized, and you don't actually control it — your bank does.</p>
-
-            <p>What if there was a form of money that combined the best properties of <em>both</em> — without the drawbacks of either?</p>
-
-            <p><strong>That's <span class="glossary-term" data-term="bitcoin">Bitcoin</span>.</strong></p>
-
-            <h3>Gold's Strengths — Without Gold's Weaknesses</h3>
-
-            <div class="comparison-grid">
-                <div class="comparison-card good animate-in">
-                    <h4><span class="icon-circle icon-gold">🥇</span> What Gold Gets Right</h4>
-                    <ul>
-                        <li><span class="glossary-term" data-term="scarcity">Scarce</span> — can't be manufactured</li>
-                        <li>Divisible — can be split into smaller units</li>
-                        <li><span class="glossary-term" data-term="final-settlement">Final settlement</span> — once transferred, it's done</li>
-                        <li>No counterparty risk — you hold it, you own it</li>
-                    </ul>
-                </div>
-                <div class="comparison-card animate-in">
-                    <h4><span class="icon-circle icon-red">🥇</span> What Gold Gets Wrong</h4>
-                    <ul>
-                        <li class="con">Heavy and hard to transport</li>
-                        <li class="con">Difficult to verify without expertise</li>
-                        <li class="con">Hard to divide for small purchases</li>
-                        <li class="con">Requires physical security (vaults, guards)</li>
-                    </ul>
-                </div>
-            </div>
-
-            <p>Bitcoin inherits all of gold's monetary strengths — it's capped at 21 million coins forever, it's divisible down to 100 millionths (called <span class="glossary-term" data-term="satoshis">satoshis</span>), and when you send it, settlement is final. But because it's digital, you can send it across the world in minutes, verify it instantly, and secure it with a password instead of a vault.</p>
-
-            <h3>Fiat's Strengths — Without Fiat's Weaknesses</h3>
-
-            <div class="comparison-grid">
-                <div class="comparison-card good animate-in">
-                    <h4><span class="icon-circle icon-green">💵</span> What Fiat Gets Right</h4>
-                    <ul>
-                        <li>Easy to move and transact</li>
-                        <li>Widely accepted</li>
-                        <li>Divisible into small amounts (cents)</li>
-                        <li>Digital transfers are fast</li>
-                    </ul>
-                </div>
-                <div class="comparison-card animate-in">
-                    <h4><span class="icon-circle icon-red">💵</span> What Fiat Gets Wrong</h4>
-                    <ul>
-                        <li class="con">No supply cap — inflates endlessly</li>
-                        <li class="con">Can be frozen, seized, or censored</li>
-                        <li class="con">You don't control it — banks and governments do</li>
-                        <li class="con">No <span class="glossary-term" data-term="final-settlement">final settlement</span> — transactions can be reversed</li>
-                    </ul>
-                </div>
-            </div>
-
-            <p>Bitcoin takes everything convenient about digital money — instant transfers, easy subdivision, global reach — but removes the fatal flaw. No one can print more of it. No bank can freeze your account. No government can inflate it away. <strong>You</strong> hold it. <strong>You</strong> control it.</p>
-
-            <h3>The Full Picture</h3>
+            <p>What if there was a form of money that had gold's scarcity — the thing that kept prices stable — but was digital, portable, and divisible? What if you could send it in seconds? What if no one could print more, no matter what emergency came along?</p>
 
             <div class="triple-grid">
-                <div class="comparison-card animate-in" style="border-top-color: #D4A017;">
-                    <h4><span class="icon-circle icon-gold">🥇</span> Gold</h4>
+                <div class="comparison-card animate-in">
+                    <h4><span class="icon-circle icon-gold">⚱️</span> Gold</h4>
                     <ul>
-                        <li>Scarce ✓</li>
-                        <li>Durable ✓</li>
-                        <li>Final settlement ✓</li>
-                        <li class="con">Hard to move</li>
-                        <li class="con">Hard to verify</li>
-                        <li class="con">Hard to divide</li>
+                        <li>✓ Scarce (limited supply)</li>
+                        <li>✓ Durable (lasts forever)</li>
+                        <li>✓ Store of value (proven, 5,000 years)</li>
+                        <li class="con">✕ Heavy (hard to transport)</li>
+                        <li class="con">✕ Hard to verify (counterfeits exist)</li>
+                        <li class="con">✕ Slow to settle (physical transfer takes time)</li>
                     </ul>
                 </div>
-                <div class="comparison-card animate-in" style="border-top-color: var(--btc-danger);">
-                    <h4><span class="icon-circle icon-red">💵</span> Fiat (Dollar)</h4>
+                <div class="comparison-card animate-in">
+                    <h4><span class="icon-circle icon-red">$</span> Fiat (Dollar)</h4>
                     <ul>
-                        <li>Easy to transact ✓</li>
-                        <li>Widely accepted ✓</li>
-                        <li>Divisible ✓</li>
-                        <li class="con">Infinite supply</li>
-                        <li class="con">Can be seized</li>
-                        <li class="con">No final settlement</li>
+                        <li>✓ Convenient (easy to use, store digitally)</li>
+                        <li>✓ Divisible (coins and cents work)</li>
+                        <li>✓ Fast settlement (instant digital transfer)</li>
+                        <li class="con">✕ Unlimited supply (can print endlessly)</li>
+                        <li class="con">✕ Debasable (loses value constantly)</li>
+                        <li class="con">✕ Centralized control (government controls it)</li>
                     </ul>
                 </div>
-                <div class="comparison-card btc animate-in" style="border-top-color: var(--btc-orange);">
+                <div class="comparison-card btc animate-in">
                     <h4><span class="icon-circle icon-orange">₿</span> Bitcoin</h4>
                     <ul>
-                        <li>Scarce (21M cap) ✓</li>
-                        <li>Easy to transact ✓</li>
-                        <li>Final settlement ✓</li>
-                        <li>Easy to verify ✓</li>
-                        <li>You control it ✓</li>
-                        <li>Can't be inflated ✓</li>
+                        <li>✓ Scarce (21 million coins, cap)</li>
+                        <li>✓ Portable (digital, instant anywhere)</li>
+                        <li>✓ Divisible (to 8 decimal places)</li>
+                        <li>✓ Fast settlement (final in minutes)</li>
+                        <li>✓ Decentralized (no one controls it)</li>
+                        <li>✓ Verifiable (mathematical proof)</li>
                     </ul>
                 </div>
             </div>
 
             <div class="callout callout-key">
                 <div class="callout-title">The Bottom Line</div>
-                <p><strong>Bitcoin is the best of gold and fiat, without the drawbacks of either.</strong> It has gold's scarcity and finality. It has fiat's convenience and speed. But unlike gold, you can send it in seconds. And unlike the dollar, no one can print more. In the coming lessons, we'll learn <em>how</em> Bitcoin achieves each of these properties — and why they can't be faked or taken away.</p>
+                <p><strong>Bitcoin is the best of gold and fiat, without the drawbacks of either.</strong> It has gold's scarcity and finality — the properties that kept prices stable for millennia. It has fiat's convenience and speed. But unlike gold, you can send it anywhere in seconds. And unlike the dollar, no one can print more. The measuring stick can't be shaved.</p>
             </div>
-
         </div>
     </section>
 
-    <!-- Wave: cool → white (FAQ) -->
     <div class="wave-divider" style="background:#EEF1F8">
         <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
             <path fill="#FFFFFF" d="M0,35C200,15,400,50,600,20C800,45,1000,10,1200,40C1350,50,1440,30,1440,30L1440,60L0,60Z"/>
@@ -2127,23 +1772,23 @@
             <h2>Common Questions</h2>
 
             <div class="callout callout-info">
-                <div class="callout-title">Q: Isn't some inflation normal and healthy?</div>
-                <p>A: Central banks <em>target</em> 2% inflation, calling it a sign of a "healthy economy." But 2% per year means your money loses half its value every 36 years. That's not healthy for savers — it's a policy choice that punishes people who try to save and rewards those who borrow. In a world with advancing technology, prices should naturally <em>fall</em> over time, not rise.</p>
+                <div class="callout-title">Q: I keep hearing inflation is "only 2–3%." Why doesn't that match what I see at the store?</div>
+                <p>A: Because the government's number — the <span class="glossary-term" data-term="cpi">Consumer Price Index</span> — is an average that gets adjusted in ways that consistently make it look lower. It uses tricks like "substitution" (if steak gets too expensive, they assume you switch to chicken and call that stable pricing) and "hedonic adjustments" (your new phone has a better camera, so they say it got <em>cheaper</em> even if the price went up). The number you see on the news and the number you feel in your wallet are two very different things.</p>
             </div>
 
             <div class="callout callout-info">
-                <div class="callout-title">Q: Don't wages go up to match inflation?</div>
-                <p>A: Sometimes — but never evenly, and rarely fast enough. Since 1970, housing has risen ~1,730% while median income has risen ~717%. Wages tend to lag behind cost-of-living increases, especially for people on fixed incomes, retirees, and lower-wage workers. Inflation hits the people who can least afford it the hardest.</p>
+                <div class="callout-title">Q: Wait — does this mean my savings account is actually losing money?</div>
+                <p>A: Yes. If your savings account pays 0.5% interest but real inflation runs 3–5% per year, you're losing 2.5–4.5% of your purchasing power every single year. You still see the same number in your account — or slightly more — but what that money <em>buys</em> shrinks. It's like having a slow leak in your tire. You don't notice it day to day, but over a few years, you're running on flat.</p>
             </div>
 
             <div class="callout callout-info">
-                <div class="callout-title">Q: If the government just stopped printing money, would prices go down?</div>
-                <p>A: The dollars already in circulation don't disappear. But if the money supply remained fixed while productivity improved, prices would gradually fall — you'd be able to buy more with each dollar over time. This is called <span class="glossary-term" data-term="deflation">deflation</span>, and it's what naturally happens in a sound monetary system. Your money would actually <em>gain</em> value for being saved.</p>
+                <div class="callout-title">Q: If gold holds its value so well, why don't we just use gold?</div>
+                <p>A: Gold is excellent at storing value — that's exactly what the data in this lesson shows. But it has real limitations as everyday money. It's heavy, hard to divide for small purchases, slow to verify, and impossible to send digitally. That's why we moved to <em>paper backed by gold</em> — and eventually dropped the backing altogether. The question becomes: is there something with gold's scarcity but without its drawbacks? That's exactly where the next lesson picks up.</p>
             </div>
 
             <div class="callout callout-info">
-                <div class="callout-title">Q: Why should I care about this? I'm not an economist.</div>
-                <p>A: You don't need to be. You already feel it — at the gas pump, at the grocery store, when you look at home prices. Understanding <em>why</em> it's happening is the first step to protecting yourself from it. That's what the rest of this course is about.</p>
+                <div class="callout-title">Q: What can I actually do about this?</div>
+                <p>A: That's what this entire course is built to answer. Step one is what you just did — understanding the problem. You can't fix what you can't see. Step two is learning about tools that exist outside the system of endless money printing. The rest of this course walks you through the most important one — and how to use it to protect yourself and your family.</p>
             </div>
 
         </div>
@@ -2155,12 +1800,12 @@
             <div class="takeaways">
                 <h2>Key Takeaways</h2>
                 <ul>
-                    <li><strong>Prices aren't going up — the dollar is going down.</strong> When the <span class="glossary-term" data-term="money-supply">money supply</span> expands faster than the economy produces goods, each dollar buys less. That's <span class="glossary-term" data-term="inflation">inflation</span>.</li>
-                    <li><strong>Money is a tool that solves the barter problem.</strong> Good money must serve as a <span class="glossary-term" data-term="medium-of-exchange">medium of exchange</span>, <span class="glossary-term" data-term="store-of-value">store of value</span>, and <span class="glossary-term" data-term="unit-of-account">unit of account</span>. Money always trends toward one — historically gold, currently the dollar.</li>
-                    <li><strong>Long-term price increases across all goods aren't supply and demand — they're monetary inflation.</strong> Short-term fluctuations are market forces. Decades-long trends across every category point to one cause: more dollars being printed.</li>
-                    <li><strong>The money supply grew by ~40% in just a few years.</strong> Over $6 trillion in new dollars were created starting in 2020, pushing M2 from $15.4 trillion to over $21 trillion — and it hasn't come back down. The consequences hit immediately: 9.1% inflation, surging costs, and eroded savings.</li>
-                    <li><strong>Innovation should make life cheaper.</strong> In many sectors, technology <em>is</em> driving prices down. But inflation steals those gains in the things you need most: housing, food, healthcare, and education.</li>
-                    <li><strong><span class="glossary-term" data-term="bitcoin">Bitcoin</span> combines the best properties of gold and fiat currency without the weaknesses of either.</strong> Scarce like gold. Convenient like the dollar. Controlled by no one but you.</li>
+                    <li><strong>Prices aren't going up — the dollar is going down.</strong> Priced in gold, oil is actually 36% cheaper than in 1913. Housing rose only 30% in gold over 111 years — compare that to the 16,380% increase in dollars. The dollar lost 97% of its CPI purchasing power in the same period. The problem isn't the goods — it's the measuring stick.</li>
+                    <li><strong>Gold maintained purchasing power because its supply grows slowly, roughly matching economic growth.</strong> The dollar failed as a store of value because its supply expands without limit — roughly 3.1% per year on average, and far more during crises like 2020.</li>
+                    <li><strong>Money's function is to solve the barter problem by serving as medium of exchange, store of value, and unit of account.</strong> For thousands of years, gold was the best money because it was scarce and stable. The dollar was good when backed by gold. It became a poor choice once the backing was removed.</li>
+                    <li><strong>The <span class="glossary-term" data-term="keynesian-economics">Keynesian view</span> says moderate inflation is healthy.</strong> The <span class="glossary-term" data-term="austrian-economics">Austrian view</span> says it's wealth transfer from savers to borrowers. The data suggests the Austrians have the stronger case: 97% of your savings' value gone in 111 years isn't "moderate."</li>
+                    <li><strong>The money supply grew ~40% in just two years starting in 2020.</strong> Over $6 trillion in new dollars were created, causing 9.1% official inflation and worse real-world inflation for the necessities people actually buy. The people who can least afford it paid the highest price.</li>
+                    <li><strong><span class="glossary-term" data-term="bitcoin">Bitcoin</span> combines gold's scarcity with digital convenience.</strong> No one can expand its supply. No committee can debase it. In the next lesson, we'll learn exactly what Bitcoin is and how it achieves what gold and the dollar cannot.</li>
                 </ul>
             </div>
         </div>
@@ -2210,6 +1855,18 @@
                         <td>Data</td>
                         <td>5 min browse</td>
                     </tr>
+                    <tr>
+                        <td><a href="https://truflation.com" target="_blank">Trueflation</a></td>
+                        <td>Decentralized Inflation Tracker</td>
+                        <td>Data</td>
+                        <td>5 min browse</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.amazon.com/Price-Tomorrow-Technology-Scarcity-Abundance/dp/1999212978" target="_blank">The Price of Tomorrow</a></td>
+                        <td>Jeff Booth</td>
+                        <td>Book</td>
+                        <td>4-5 hrs</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -2233,8 +1890,20 @@
             <p style="font-size: 0.9rem; color: var(--btc-gray); margin-bottom: 1.5rem;"><em>Terms are clickable in the HTML version of this lesson. This section is a full reference.</em></p>
             <dl class="glossary-list">
                 <div class="glossary-entry">
+                    <dt>Austrian Economics</dt>
+                    <dd>A school of economic thought emphasizing free markets, sound money, and minimal government intervention. Austrian economists view inflation as an expansion of the money supply that transfers wealth from savers to those closest to the money printer.</dd>
+                </div>
+                <div class="glossary-entry">
                     <dt>Bitcoin</dt>
-                    <dd>A decentralized digital currency with a fixed supply of 21 million coins. It combines the scarcity of gold with the convenience of digital money, and no central authority controls it.</dd>
+                    <dd>A decentralized digital currency with a fixed supply of 21 million coins. It combines the scarcity of gold with the convenience of digital money. No central authority controls it.</dd>
+                </div>
+                <div class="glossary-entry">
+                    <dt>Cantillon Effect</dt>
+                    <dd>The observation that newly created money doesn't enter the economy evenly — it benefits those who receive it first (banks, governments, large institutions) while diluting the purchasing power of those who receive it last (ordinary workers and savers).</dd>
+                </div>
+                <div class="glossary-entry">
+                    <dt>Consumer Price Index (CPI)</dt>
+                    <dd>The government's primary measure of inflation, tracking price changes in a basket of goods and services. Critics argue its methodology has been adjusted over decades to understate actual inflation experienced by consumers.</dd>
                 </div>
                 <div class="glossary-entry">
                     <dt>Deflation</dt>
@@ -2253,16 +1922,16 @@
                     <dd>The central bank of the United States, created in 1913. It controls the money supply and sets interest rates. Its ability to create new dollars is the mechanism through which inflation occurs.</dd>
                 </div>
                 <div class="glossary-entry">
-                    <dt>Final Settlement</dt>
-                    <dd>A payment that is fully and irreversibly complete. Once settled, neither party can reverse or undo it. Gold and Bitcoin offer final settlement; bank transfers and credit cards do not.</dd>
-                </div>
-                <div class="glossary-entry">
                     <dt>Gold</dt>
                     <dd>A precious metal that served as the world's primary money for thousands of years due to its scarcity, durability, and difficulty to counterfeit. The US dollar was backed by gold until 1971.</dd>
                 </div>
                 <div class="glossary-entry">
                     <dt>Inflation</dt>
                     <dd>The expansion of the money supply, which results in each unit of currency buying less over time. Commonly described as "rising prices," but more accurately understood as the currency losing purchasing power.</dd>
+                </div>
+                <div class="glossary-entry">
+                    <dt>Keynesian Economics</dt>
+                    <dd>A school of economic thought advocating for government intervention, central bank management of the money supply, and moderate inflation as tools for economic stability. Named after economist John Maynard Keynes.</dd>
                 </div>
                 <div class="glossary-entry">
                     <dt>M2 Money Supply</dt>
@@ -2285,16 +1954,12 @@
                     <dd>The amount of goods or services a unit of currency can buy. When inflation occurs, purchasing power decreases — each dollar buys less than it used to.</dd>
                 </div>
                 <div class="glossary-entry">
-                    <dt>Satoshis</dt>
-                    <dd>The smallest unit of Bitcoin, equal to 0.00000001 BTC (one hundred-millionth of a bitcoin). Named after Bitcoin's pseudonymous creator, Satoshi Nakamoto.</dd>
-                </div>
-                <div class="glossary-entry">
-                    <dt>Scarcity</dt>
-                    <dd>A limited supply that cannot be easily increased. Gold is scarce because it's difficult to mine. Bitcoin is scarce because its supply is mathematically capped at 21 million coins.</dd>
-                </div>
-                <div class="glossary-entry">
                     <dt>Store of Value</dt>
                     <dd>One of the three functions of money. Something that maintains its purchasing power over time. Gold is a strong store of value; fiat currencies are weak stores of value due to inflation.</dd>
+                </div>
+                <div class="glossary-entry">
+                    <dt>Trueflation</dt>
+                    <dd>A decentralized, real-time inflation index that tracks over 15 million items using actual retail, housing, and economic data. Provides an alternative measurement to government-reported CPI.</dd>
                 </div>
                 <div class="glossary-entry">
                     <dt>Unit of Account</dt>
@@ -2308,42 +1973,46 @@
     <script>
         (function() {
             const definitions = {
+                "austrian-economics": "A school of economic thought emphasizing free markets, sound money, and minimal government intervention. Austrian economists view inflation as an expansion of the money supply that transfers wealth from savers to those closest to the money printer.",
                 "bitcoin": "A decentralized digital currency with a fixed supply of 21 million coins. It combines the scarcity of gold with the convenience of digital money, and no central authority controls it.",
+                "cantillon-effect": "The observation that newly created money doesn't enter the economy evenly — it benefits those who receive it first (banks, governments) while diluting purchasing power of those who receive it last (ordinary workers).",
+                "cpi": "The government's primary measure of inflation, tracking price changes in a basket of goods. Critics argue its methodology has been adjusted to understate actual inflation.",
                 "deflation": "A decrease in the general price level — meaning your money buys more over time. This happens naturally when productivity increases faster than the money supply.",
                 "double-coincidence-of-wants": "The problem in barter where both parties must want exactly what the other has at the same time and place. Money solves this by acting as a universal intermediary.",
                 "fiat-currency": "Government-issued money that isn't backed by a physical commodity like gold. Its value comes from government decree and public trust.",
                 "federal-reserve": "The central bank of the United States, created in 1913. It controls the money supply and sets interest rates. Its ability to create new dollars is the mechanism through which inflation occurs.",
-                "final-settlement": "A payment that is fully and irreversibly complete. Once settled, neither party can reverse or undo it. Gold and Bitcoin offer final settlement; bank transfers do not.",
                 "gold": "A precious metal that served as the world's primary money for thousands of years due to its scarcity, durability, and difficulty to counterfeit.",
                 "inflation": "The expansion of the money supply, which results in each unit of currency buying less over time. Commonly described as 'rising prices,' but more accurately understood as the currency losing purchasing power.",
+                "keynesian-economics": "A school of economic thought advocating for government intervention, central bank management of the money supply, and moderate inflation as tools for economic stability.",
                 "m2": "A measure of the total amount of money in circulation, including cash, checking deposits, savings accounts, and money market accounts.",
                 "medium-of-exchange": "One of the three functions of money. Something widely accepted in trade so people don't have to barter directly.",
                 "money": "A tool that solves the barter problem by serving as a medium of exchange, store of value, and unit of account.",
                 "money-supply": "The total amount of money in circulation in an economy. When it grows faster than production of goods and services, inflation results.",
                 "purchasing-power": "The amount of goods or services a unit of currency can buy. When inflation occurs, purchasing power decreases.",
-                "satoshis": "The smallest unit of Bitcoin, equal to 0.00000001 BTC (one hundred-millionth of a bitcoin). Named after Bitcoin's pseudonymous creator.",
-                "scarcity": "A limited supply that cannot be easily increased. Bitcoin is scarce because its supply is mathematically capped at 21 million coins.",
                 "store-of-value": "One of the three functions of money. Something that maintains its purchasing power over time. Gold is strong; fiat currencies are weak due to inflation.",
+                "trueflation": "A decentralized, real-time inflation index that tracks over 15 million items using actual retail and housing data.",
                 "unit-of-account": "One of the three functions of money. A standard measurement for pricing goods and services.",
             };
 
             const termNames = {
+                "austrian-economics": "Austrian Economics",
                 "bitcoin": "Bitcoin",
+                "cantillon-effect": "Cantillon Effect",
+                "cpi": "Consumer Price Index",
                 "deflation": "Deflation",
                 "double-coincidence-of-wants": "Double Coincidence of Wants",
                 "fiat-currency": "Fiat Currency",
                 "federal-reserve": "Federal Reserve",
-                "final-settlement": "Final Settlement",
                 "gold": "Gold",
                 "inflation": "Inflation",
+                "keynesian-economics": "Keynesian Economics",
                 "m2": "M2 Money Supply",
                 "medium-of-exchange": "Medium of Exchange",
                 "money": "Money",
                 "money-supply": "Money Supply",
                 "purchasing-power": "Purchasing Power",
-                "satoshis": "Satoshis",
-                "scarcity": "Scarcity",
                 "store-of-value": "Store of Value",
+                "trueflation": "Trueflation",
                 "unit-of-account": "Unit of Account",
             };
 
@@ -2507,78 +2176,6 @@
                 counterObserver.observe(stat);
             });
         })();
-    </script>
-
-
-
-    </div><!-- /lesson-content-wrapper -->
-
-    <!-- ACCESS GATE LOGIC -->
-    <script>
-    // Simple hash function for access code verification
-    // This is NOT military-grade security — it prevents casual access.
-    // Someone technical could view-source around it, but for a course
-    // at a normal price point, this is standard and appropriate.
-    function simpleHash(str) {
-        var hash = 0;
-        for (var i = 0; i < str.length; i++) {
-            var chr = str.charCodeAt(i);
-            hash = ((hash << 5) - hash) + chr;
-            hash |= 0; // Convert to 32bit integer
-        }
-        return hash;
-    }
-
-    // ---------------------------------------------------
-    // SET YOUR ACCESS CODE HERE
-    // Change this hash to match your chosen access code.
-    // To generate a new hash: open browser console and run:
-    //   simpleHash("your-new-code")
-    // Then paste that number below.
-    // ---------------------------------------------------
-    var VALID_HASH = 194994899; // Default code: "btc2026"
-
-    function checkAccess() {
-        var code = document.getElementById('gateCode').value.trim();
-        if (!code) {
-            document.getElementById('gateError').textContent = 'Please enter an access code.';
-            return;
-        }
-        if (simpleHash(code) === VALID_HASH) {
-            // Unlock — store in sessionStorage so it persists during this browser session
-            sessionStorage.setItem('btc_edu_access', 'granted');
-            document.getElementById('accessGate').classList.add('unlocked');
-            document.getElementById('lessonContent').classList.add('visible');
-        } else {
-            document.getElementById('gateError').textContent = 'Invalid access code. Please try again.';
-            document.getElementById('gateCode').value = '';
-            document.getElementById('gateCode').focus();
-        }
-    }
-
-    // Allow Enter key to submit
-    document.getElementById('gateCode').addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') checkAccess();
-    });
-
-    // Check if already unlocked this session
-    if (sessionStorage.getItem('btc_edu_access') === 'granted') {
-        document.getElementById('accessGate').classList.add('unlocked');
-        document.getElementById('lessonContent').classList.add('visible');
-    }
-    </script>
-
-    <!-- PWA: Register Service Worker -->
-    <script>
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-            navigator.serviceWorker.register('./sw.js').then(function(reg) {
-                console.log('Service Worker registered — scope:', reg.scope);
-            }).catch(function(err) {
-                console.log('Service Worker registration failed:', err);
-            });
-        });
-    }
     </script>
 
 </body>
