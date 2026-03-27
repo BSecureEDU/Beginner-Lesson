@@ -1,5 +1,6 @@
 // Bitcoin Education — Service Worker
 // Provides offline caching so the PWA works without internet after first load
+// Auto-reloads clients when a new version is deployed
 
 const CACHE_NAME = 'btc-edu-v5';
 const ASSETS_TO_CACHE = [
@@ -21,7 +22,7 @@ self.addEventListener('install', event => {
     self.skipWaiting();
 });
 
-// Activate: clean up old caches if version changes
+// Activate: clean up old caches, then tell all open tabs to reload
 self.addEventListener('activate', event => {
     event.waitUntil(
         caches.keys().then(keys => {
@@ -29,34 +30,60 @@ self.addEventListener('activate', event => {
                 keys.filter(key => key !== CACHE_NAME)
                     .map(key => caches.delete(key))
             );
+        }).then(() => {
+            // Notify all open tabs/windows that a new version is live
+            return self.clients.matchAll({ type: 'window' }).then(clients => {
+                clients.forEach(client => {
+                    client.postMessage({ type: 'SW_UPDATED' });
+                });
+            });
         })
     );
     // Take control of all open tabs immediately
     self.clients.claim();
 });
 
-// Fetch: serve from cache first, fall back to network
+// Fetch: network-first for HTML (always get latest), cache-first for assets
 self.addEventListener('fetch', event => {
-    event.respondWith(
-        caches.match(event.request).then(cachedResponse => {
-            if (cachedResponse) {
-                return cachedResponse;
-            }
-            return fetch(event.request).then(networkResponse => {
-                // Cache new successful responses for future offline use
+    const request = event.request;
+
+    // HTML pages: try network first so updates show immediately
+    if (request.destination === 'document' || request.mode === 'navigate') {
+        event.respondWith(
+            fetch(request).then(networkResponse => {
+                // Cache the fresh copy for offline use
                 if (networkResponse && networkResponse.status === 200) {
                     const responseClone = networkResponse.clone();
                     caches.open(CACHE_NAME).then(cache => {
-                        cache.put(event.request, responseClone);
+                        cache.put(request, responseClone);
+                    });
+                }
+                return networkResponse;
+            }).catch(() => {
+                // Offline — serve cached HTML
+                return caches.match(request).then(cached => cached || caches.match('./index.html'));
+            })
+        );
+        return;
+    }
+
+    // Everything else (icons, manifest, etc.): cache-first for speed
+    event.respondWith(
+        caches.match(request).then(cachedResponse => {
+            if (cachedResponse) {
+                return cachedResponse;
+            }
+            return fetch(request).then(networkResponse => {
+                if (networkResponse && networkResponse.status === 200) {
+                    const responseClone = networkResponse.clone();
+                    caches.open(CACHE_NAME).then(cache => {
+                        cache.put(request, responseClone);
                     });
                 }
                 return networkResponse;
             });
         }).catch(() => {
-            // If both cache and network fail, show a fallback for HTML requests
-            if (event.request.destination === 'document') {
-                return caches.match('./index.html');
-            }
+            // Silent fail for non-critical assets
         })
     );
 });

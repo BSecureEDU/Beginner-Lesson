@@ -2178,5 +2178,19 @@
         })();
     </script>
 
+    <!-- Service Worker Registration + Auto-Reload on Update -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js');
+
+            // When the SW sends "SW_UPDATED", reload to show new content
+            navigator.serviceWorker.addEventListener('message', event => {
+                if (event.data && event.data.type === 'SW_UPDATED') {
+                    window.location.reload();
+                }
+            });
+        }
+    </script>
+
 </body>
 </html>
