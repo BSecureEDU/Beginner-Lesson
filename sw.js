@@ -2,7 +2,7 @@
 // Provides offline caching so the PWA works without internet after first load
 // Auto-reloads clients when a new version is deployed
 
-const CACHE_NAME = 'btc-edu-v6';
+const CACHE_NAME = 'btc-edu-v7';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
