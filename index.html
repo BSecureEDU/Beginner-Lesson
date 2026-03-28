@@ -4,19 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>What is Money? — Bitcoin Education</title>
-
-    <!-- PWA manifest + icons -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#F7931A">
-    <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-
-    <!-- iOS home screen icon (iOS ignores manifest.json for icons) -->
-    <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
-    <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="BTC Edu">
     <style>
         /* ===== BASE STYLES ===== */
         :root {
@@ -1261,13 +1248,13 @@
     <section class="section-band bg-warm">
         <div class="content">
             <div class="callout callout-example" style="margin-top: 0;">
-                <div class="callout-title">A Word From the Author</div>
+                <div class="callout-title">A Little Back Story on Me First</div>
                 <p>In 2020, my wife and I were expecting our first child. We owned a home. We were making more money combined than ever before. But for some reason, we just couldn't get ahead.</p>
                 <p>We'd been in our house since 2018 and hadn't built any real savings — nothing to prepare for a baby and everything that comes with one. I couldn't wrap my mind around why we were "just getting by."</p>
                 <p>So I checked the spending. We weren't going on trips. We ate out only a few nights a month — I actually like to cook at home. Amazon packages showed up from time to time, but nothing outrageous. I assumed it had to be indiscriminate spending. Nope. Checked the grocery bill — <em>ouch.</em> Checked the electric bill. Checked how much gas we were burning through.</p>
-                <p>It wasn't a lavish lifestyle draining our bank accounts. <strong>It was just living.</strong> And every year, living cost more. Not because we'd changed our habits — because the money itself was changing. Becoming worth less.</p>
-                <p>That realization started me down a path: why is life just so costly? And that trail led me to the question I had never thought to ask before — <em>"What is money?"</em></p>
-                <p>The answer to that question led me to Bitcoin. But first, I needed to understand why the ruler we were using to measure the cost of living kept shrinking. Let's find out.</p>
+                <p>It wasn't a lavish lifestyle draining our bank account. <strong>It was just living.</strong> And every year, living cost more. Not because we'd changed our habits — because the money itself was changing. Becoming worth less.</p>
+                <p>That realization started me down a path to find out why. And that path led me to the question I had never thought to ask before — <em>"What is money?"</em></p>
+                <p>The answer to that question ultimately led me to Bitcoin. But first, I needed to understand why the ruler we were using to measure the cost of living kept shrinking. You may have found yourself reading this because you're wondering the same thing — feeling the same squeeze. Or maybe everything seems fine for now, but you keep hearing about Bitcoin and how so many people believe it's important. Either way, my intent with this 10-part Beginner course is to show you why.</p>
             </div>
         </div>
     </section>
@@ -1294,40 +1281,94 @@
 
             <p>Most people describe this feeling the same way: <em>"Prices keep going up."</em> That's what it <em>looks</em> like. But that's not what's actually happening.</p>
 
-            <p><strong>Prices aren't going up. Your dollar is going down.</strong></p>
+            <p><strong>Prices aren't going up. Your dollar is buying less!</strong></p>
 
-            <!-- Shrinking Dollar Visual -->
+            <!-- Purchasing Power Decline Chart -->
             <div class="svg-graphic animate-in">
-                <svg viewBox="0 0 700 160" xmlns="http://www.w3.org/2000/svg" style="max-width:600px">
-                    <!-- Background -->
-                    <rect x="0" y="0" width="700" height="160" rx="14" fill="#1A1A2E"/>
-                    <rect x="0" y="0" width="700" height="160" rx="14" fill="url(#shrinkGrad)" opacity="0.15"/>
+                <svg viewBox="0 0 720 340" xmlns="http://www.w3.org/2000/svg" style="max-width:680px">
                     <defs>
-                        <linearGradient id="shrinkGrad" x1="0" y1="0" x2="700" y2="0">
+                        <linearGradient id="declineGrad" x1="0" y1="0" x2="720" y2="0">
                             <stop offset="0%" stop-color="#F7931A"/>
                             <stop offset="100%" stop-color="#E74C3C"/>
                         </linearGradient>
+                        <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#E74C3C" stop-opacity="0.25"/>
+                            <stop offset="100%" stop-color="#E74C3C" stop-opacity="0.03"/>
+                        </linearGradient>
                     </defs>
-                    <!-- Label -->
-                    <text x="350" y="24" fill="rgba(255,255,255,0.45)" font-size="11" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif" letter-spacing="0.1em">PURCHASING POWER EROSION: 1913 → 2024</text>
-                    <!-- Dollar signs shrinking left to right -->
-                    <text x="80" y="105" fill="#F7931A" font-size="72" font-weight="700" text-anchor="middle" font-family="Georgia, serif" opacity="1">$</text>
-                    <text x="80" y="130" fill="rgba(255,255,255,0.5)" font-size="12" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">1913</text>
 
-                    <text x="210" y="105" fill="#E8B84B" font-size="56" font-weight="700" text-anchor="middle" font-family="Georgia, serif" opacity="0.85">$</text>
-                    <text x="210" y="130" fill="rgba(255,255,255,0.5)" font-size="12" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">1950</text>
+                    <!-- Background -->
+                    <rect x="0" y="0" width="720" height="340" rx="14" fill="#1A1A2E"/>
 
-                    <text x="340" y="105" fill="#D4854A" font-size="40" font-weight="700" text-anchor="middle" font-family="Georgia, serif" opacity="0.7">$</text>
-                    <text x="340" y="130" fill="rgba(255,255,255,0.5)" font-size="12" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">1985</text>
+                    <!-- Title -->
+                    <text x="360" y="28" fill="rgba(255,255,255,0.45)" font-size="11" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif" letter-spacing="0.1em">PURCHASING POWER OF $1 (1913 DOLLAR) — CPI DATA</text>
 
-                    <text x="470" y="105" fill="#C26830" font-size="24" font-weight="700" text-anchor="middle" font-family="Georgia, serif" opacity="0.6">$</text>
-                    <text x="470" y="130" fill="rgba(255,255,255,0.5)" font-size="12" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">2010</text>
+                    <!-- Y-axis labels -->
+                    <text x="52" y="56" fill="rgba(255,255,255,0.5)" font-size="11" text-anchor="end" font-family="Segoe UI, sans-serif">$1.00</text>
+                    <text x="52" y="108" fill="rgba(255,255,255,0.5)" font-size="11" text-anchor="end" font-family="Segoe UI, sans-serif">$0.75</text>
+                    <text x="52" y="161" fill="rgba(255,255,255,0.5)" font-size="11" text-anchor="end" font-family="Segoe UI, sans-serif">$0.50</text>
+                    <text x="52" y="213" fill="rgba(255,255,255,0.5)" font-size="11" text-anchor="end" font-family="Segoe UI, sans-serif">$0.25</text>
+                    <text x="52" y="265" fill="rgba(255,255,255,0.5)" font-size="11" text-anchor="end" font-family="Segoe UI, sans-serif">$0.00</text>
 
-                    <text x="600" y="105" fill="#B35821" font-size="12" font-weight="700" text-anchor="middle" font-family="Georgia, serif" opacity="0.5">$</text>
-                    <text x="600" y="130" fill="rgba(255,255,255,0.5)" font-size="12" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">2024</text>
+                    <!-- Grid lines -->
+                    <line x1="62" y1="52" x2="680" y2="52" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                    <line x1="62" y1="104" x2="680" y2="104" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                    <line x1="62" y1="156" x2="680" y2="156" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                    <line x1="62" y1="208" x2="680" y2="208" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                    <line x1="62" y1="260" x2="680" y2="260" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
 
-                    <!-- Arrow label -->
-                    <text x="650" y="60" fill="#E74C3C" font-size="14" font-weight="700" text-anchor="middle" font-family="Segoe UI, sans-serif">-97%</text>
+                    <!-- 1971 vertical marker (dashed) -->
+                    <line x1="386" y1="42" x2="386" y2="270" stroke="#F7931A" stroke-width="1.5" stroke-dasharray="5,4" opacity="0.6"/>
+                    <text x="386" y="290" fill="#F7931A" font-size="10" font-weight="700" text-anchor="middle" font-family="Segoe UI, sans-serif">NIXON ENDS</text>
+                    <text x="386" y="302" fill="#F7931A" font-size="10" font-weight="700" text-anchor="middle" font-family="Segoe UI, sans-serif">GOLD STANDARD</text>
+
+                    <!-- Filled area under the curve -->
+                    <polygon points="68,52 160,130 272,175 386,210 434,230 544,244 680,252 680,260 68,260" fill="url(#areaFill)"/>
+
+                    <!-- Main decline line — gradual 1913-1971, steep 1971-2024 -->
+                    <!--
+                        Data points (BLS CPI, 1982-84=100):
+                        1913: CPI 9.9  → $1.00 → y=52
+                        1930: CPI 16.7 → $0.59 → y=130
+                        1950: CPI 24.1 → $0.41 → y=175
+                        1971: CPI 40.5 → $0.24 → y=210
+                        1980: CPI 82.4 → $0.12 → y=230  (steep!)
+                        2000: CPI 172  → $0.06 → y=244
+                        2024: CPI ~314 → $0.03 → y=252
+                        x mapping: 1913=68, 2024=680 (612px / 111yr ≈ 5.5px/yr)
+                    -->
+                    <polyline points="68,52 160,130 272,175 386,210 434,230 544,244 680,252"
+                              fill="none" stroke="#E74C3C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+                    <!-- Data point dots -->
+                    <circle cx="68"  cy="52"  r="5" fill="#F7931A"/>
+                    <circle cx="160" cy="130" r="4" fill="#E8B84B"/>
+                    <circle cx="272" cy="175" r="4" fill="#D4854A"/>
+                    <circle cx="386" cy="210" r="5" fill="#F7931A" stroke="#fff" stroke-width="1.5"/>
+                    <circle cx="434" cy="230" r="4" fill="#C26830"/>
+                    <circle cx="544" cy="244" r="4" fill="#B35821"/>
+                    <circle cx="680" cy="252" r="5" fill="#E74C3C" stroke="#fff" stroke-width="1.5"/>
+
+                    <!-- Value labels at each data point -->
+                    <text x="68"  y="44"  fill="#F7931A" font-size="12" font-weight="700" text-anchor="middle" font-family="Georgia, serif">$1.00</text>
+                    <text x="160" y="122" fill="#E8B84B" font-size="11" font-weight="600" text-anchor="middle" font-family="Georgia, serif">$0.59</text>
+                    <text x="272" y="167" fill="#D4854A" font-size="11" font-weight="600" text-anchor="middle" font-family="Georgia, serif">$0.41</text>
+                    <text x="386" y="202" fill="#F7931A" font-size="12" font-weight="700" text-anchor="middle" font-family="Georgia, serif">$0.24</text>
+                    <text x="434" y="222" fill="#C26830" font-size="11" font-weight="600" text-anchor="start" font-family="Georgia, serif">$0.12</text>
+                    <text x="544" y="236" fill="#B35821" font-size="11" font-weight="600" text-anchor="middle" font-family="Georgia, serif">$0.06</text>
+                    <text x="680" y="244" fill="#E74C3C" font-size="12" font-weight="700" text-anchor="end" font-family="Georgia, serif">$0.03</text>
+
+                    <!-- Year labels along x-axis -->
+                    <text x="68"  y="277" fill="rgba(255,255,255,0.55)" font-size="11" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">1913</text>
+                    <text x="160" y="277" fill="rgba(255,255,255,0.55)" font-size="11" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">1930</text>
+                    <text x="272" y="277" fill="rgba(255,255,255,0.55)" font-size="11" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">1950</text>
+                    <text x="434" y="277" fill="rgba(255,255,255,0.55)" font-size="11" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">1980</text>
+                    <text x="544" y="277" fill="rgba(255,255,255,0.55)" font-size="11" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">2000</text>
+                    <text x="680" y="277" fill="rgba(255,255,255,0.55)" font-size="11" font-weight="600" text-anchor="middle" font-family="Segoe UI, sans-serif">2024</text>
+
+                    <!-- -97% badge -->
+                    <rect x="628" y="296" width="58" height="24" rx="6" fill="#E74C3C" opacity="0.9"/>
+                    <text x="657" y="313" fill="#fff" font-size="13" font-weight="700" text-anchor="middle" font-family="Segoe UI, sans-serif">−97%</text>
                 </svg>
             </div>
 
@@ -1349,7 +1390,7 @@
         <div class="content">
             <div class="section-intro">
                 <span class="section-number">02</span>
-                <h2>The Gold Lens: A Better Ruler</h2>
+                <h2>Gold — A Better Ruler</h2>
             </div>
 
             <div class="callout callout-example">
@@ -1357,7 +1398,7 @@
                 <p>You're using a ruler to measure a table. Every year, someone sneaks in and shaves a quarter-inch off your ruler. The table hasn't changed — but every time you measure, it looks bigger. That's what's happening to the dollar. The economy is the table. The dollar is the ruler. And the Federal Reserve has been shaving the ruler for 111 years.</p>
             </div>
 
-            <p>Here's where inflation becomes undeniable: <strong>compare prices in dollars to prices in gold.</strong></p>
+            <p>Here's where inflation becomes undeniable: <strong>compare prices in dollars to prices in gold.</strong> <span style="font-size: 0.9em; color: var(--btc-gray);">(All figures use 2024 annual averages — gold at ~$2,625/oz, oil at ~$77/bbl — to avoid distortions from the sharp gold rally and oil volatility in 2025–2026.)</span></p>
 
             <table>
                 <thead>
@@ -1534,7 +1575,7 @@
 
             <div class="callout callout-key">
                 <div class="callout-title">Why Gold Is the Better Ruler</div>
-                <p>Gold's supply grows by about 1.5–2% per year through mining — roughly matching the growth rate of the global economy. You can't print gold. You can't create 40% more of it overnight. For thousands of years, gold served as money precisely because its supply was hard to manipulate. It was the ultimate honest ruler.</p>
+                <p>Gold's supply grows by about 1.5–2% per year through mining — roughly matching the growth rate of the global economy. Where do you think the Fed got its 2% inflation target from? You can't print gold. You can't create 40% more of it overnight. For thousands of years, gold served as money precisely because its supply was hard to manipulate. It was the ultimate honest ruler.</p>
             </div>
 
             <p>The dollar, on the other hand, has no limit. The Federal Reserve can create as much as it wants, whenever it wants, for whatever reason it wants. And it does.</p>
@@ -1543,6 +1584,7 @@
                 <div class="callout-title">Two Schools of Thought</div>
                 <p><strong><span class="glossary-term" data-term="keynesian-economics">Keynesian economists</span></strong> argue moderate inflation is healthy. It encourages spending, prevents hoarding, and keeps the economy moving. From this view, the dollar losing value is a feature, not a bug — a tool for managing the economy.</p>
                 <p><strong><span class="glossary-term" data-term="austrian-economics">Austrian economists</span></strong> say that narrative confuses cause and effect. They argue that inflation is an expansion of the money supply that transfers wealth — from savers to borrowers, from ordinary people to those closest to the money printer. From this view, the dollar losing 97% of its value is theft in slow motion.</p>
+                <p>It's worth asking why one school dominates. A fiat system gives government the ability to spend beyond its means — fund wars, bail out banks, run deficits — without directly raising taxes. A sound money standard constrains that power. So which economic school do you think gets more institutional support? The one that says the government should have less control over money, or the one that says it should have more? Keynesian economics dominates academia not because it won the debate, but because the institutions doing the teaching are funded by the system Keynesian policy sustains. That's not conspiracy — it's incentive alignment.</p>
                 <p>This course will present both perspectives. But we'll always check them against the data — because facts don't care about economic theories.</p>
             </div>
 
@@ -1943,7 +1985,7 @@
             <div class="takeaways">
                 <h2>Key Takeaways</h2>
                 <ul>
-                    <li><strong>Prices aren't going up — the dollar is going down.</strong> Priced in gold, oil is actually 36% cheaper than in 1913. Housing rose only 30% in gold over 111 years — compare that to the 16,380% increase in dollars. The dollar lost 97% of its CPI purchasing power in the same period. The problem isn't the goods — it's the measuring stick.</li>
+                    <li><strong>Prices aren't going up — the dollar is buying less!</strong> Priced in gold, oil is actually 36% cheaper than in 1913. Housing rose only 30% in gold over 111 years — compare that to the 16,380% increase in dollars. The dollar lost 97% of its CPI purchasing power in the same period. The problem isn't the goods — it's the measuring stick.</li>
                     <li><strong>Gold maintained purchasing power because its supply grows slowly, roughly matching economic growth.</strong> The dollar failed as a store of value because its supply expands without limit — roughly 3.1% per year on average, and far more during crises like 2020.</li>
                     <li><strong>Money's function is to solve the barter problem by serving as medium of exchange, store of value, and unit of account.</strong> For thousands of years, gold was the best money because it was scarce and stable. The dollar was good when backed by gold. It became a poor choice once the backing was removed.</li>
                     <li><strong>The <span class="glossary-term" data-term="keynesian-economics">Keynesian view</span> says moderate inflation is healthy.</strong> The <span class="glossary-term" data-term="austrian-economics">Austrian view</span> says it's wealth transfer from savers to borrowers. The data suggests the Austrians have the stronger case: 97% of your savings' value gone in 111 years isn't "moderate."</li>
