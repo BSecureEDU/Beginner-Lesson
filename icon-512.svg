@@ -1,10 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#1A1A2E"/>
-      <stop offset="100%" style="stop-color:#16213E"/>
+      <stop offset="0%" style="stop-color:#F7931A"/>
+      <stop offset="100%" style="stop-color:#E8850F"/>
     </linearGradient>
   </defs>
   <rect width="512" height="512" rx="96" fill="url(#bg)"/>
-  <text x="256" y="340" text-anchor="middle" font-family="Georgia, serif" font-size="320" font-weight="700" fill="#F7931A">₿</text>
+  <g transform="translate(121.87,387.84) scale(0.199754,-0.199754)" fill="#1A1A2E">
+    <path d="M878 1010Q878 1127 827.5 1179.0Q777 1231 661 1231H522V764H669Q776 764 827.0 820.0Q878 876 878 1010ZM979 391Q979 524 912.5 589.0Q846 654 695 654H522V110Q666 104 749 104Q866 104 922.5 175.0Q979 246 979 391ZM545 -314V-4L416 -3V-313L226 -311V-1L34 0V73L207 100V1242L34 1268V1341H226V1631H416V1341H541V1631L738 1634V1340Q958 1337 1079 1270Q1206 1198 1206 1038Q1206 918 1131.0 831.0Q1056 744 930 717Q1117 698 1213.0 615.5Q1309 533 1309 391Q1309 196 1165.0 95.0Q1021 -6 752 -6L753 -313Z"/>
+  </g>
 </svg>
